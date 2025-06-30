@@ -1,0 +1,515 @@
+<resources>
+        <string name="app_name">Knjigomat</string>
+        <string name="base_url">http://192.168.5.25:3000</string>
+        <string name="base_chat_url">http://192.168.5.25:8080</string>
+        <string name="navigation_drawer_open">Open navigation drawer</string>
+        <string name="navigation_drawer_close">Close navigation drawer</string>
+        <string name="nav_header_title">Android Studio</string>
+        <string name="nav_header_subtitle">android.studio@android.com</string>
+        <string name="nav_header_desc">Navigation header</string>
+        <string name="action_settings">Postavke</string>
+
+    <!-- Novi stringovi za jezik -->
+    <string name="dialog_language_title">Odaberite jezik</string>
+    <string name="language_changed">Jezik je promijenjen</string>
+    <string name="change_language">Promijeni jezik</string>
+    <string name="no_my_books">Nemate dodanih knjiga.</string>
+
+
+    <string name="menu_home">Početna</string>
+        <string name="menu_my_books">Moje knjige</string>
+        <string name="menu_profile">Moj profil</string>
+        <string name="menu_chats">Razgovori</string>
+        <string name="menu_notifications">Obavijesti</string>
+        <string name="menu_history">Povijest razmjena</string>
+
+    <!--    BookAdapter( Condition/ Visibility/ Status -->
+        <string name="condition_new">Novo</string>
+        <string name="condition_good">Vrlo dobro</string>
+        <string name="condition_used">Korišteno</string>
+        <string name="condition_damaged">Oštećeno</string>
+
+        <string name="visibility_private">Privatno</string>
+        <string name="visibility_public">Javno</string>
+
+        <string name="status_available">Dostupno</string>
+        <string name="status_borrowed">Posuđeno</string>
+
+        <string name="unknown">Nepoznato</string>
+        <!--kraj BookAdapter-->
+
+        <!--    BookImagePagerAdapter-->
+        <string name="fullscreen_image">Fullscreen image</string>
+    <string name="delete_image_title">Obriši sliku</string>
+    <string name="delete_image_message">Jesi li siguran/na da želiš obrisati ovu sliku?</string>
+    <string name="delete">Obriši</string>
+    <string name="cancel">Odustani</string>
+    <string name="book_image_adapter_tag">BookImagePagerAdapter</string>
+
+
+    <!-- ConversationsAdapter -->
+    <string name="placeholder_user">Korisnik: </string>
+    <string name="no_messages_yet">Još nema poruka</string>
+
+    <!-- ExchangeHistoryAdapter -->
+    <string name="book_title">Naslov</string>
+    <string name="book_author">Autor</string>
+
+    <!-- Message sender -->
+    <string name="unknown_user">Nepoznat korisnik</string>
+
+    <!-- Book request statuses -->
+<!--    <string name="status_pending">Na čekanju</string>-->
+    <string name="status_accepted">Prihvaćen</string>
+    <string name="status_rejected">Odbijen</string>
+
+    <!-- Button actions -->
+    <string name="button_accept">Prihvati</string>
+    <string name="button_reject">Odbij</string>
+
+    <!-- Toast messages (ako ih budeš dodavala) -->
+    <string name="toast_request_accepted">Zahtjev je prihvaćen</string>
+    <string name="toast_request_rejected">Zahtjev je odbijen</string>
+
+    <!--  BookService  -->
+    <string name="error_unsuccessful_response">Neuspješan odgovor</string>
+        <string name="error_update_book">Neuspješno ažuriranje knjige: </string>
+        <string name="error_create_book">Neuspješno stvaranje knjige: </string>
+        <string name="error_upload_image">Neuspješan upload slike: </string>
+        <string name="error_delete_image">Neuspješno brisanje slike: </string>
+
+    <!-- MainActivity  -->
+    <string name="add_book">Dodaj knjigu</string>
+    <string name="no_book_selected_edit">Nijedna knjiga nije odabrana za uređivanje</string>
+    <string name="chat_start_failed">Neuspješno pokretanje razgovora</string>
+    <string name="book_request_failed">Neuspješno slanje zahtjeva za knjigu: </string>
+    <string name="edit_conversations">Uredi razgovore</string>
+    <string name="notifications_marked">Sve obavijesti označene kao pročitane</string>
+    <string name="share_conversation">Podijeli razgovor</string>
+    <string name="history_filters">Filteri povijesti</string>
+    <string name="logout_failed">Odjava nije uspjela</string>
+    <string name="generic_failure">Greška: </string>
+<!--    MAINACTIVITY ALERT  -->
+    <!-- Naslovi dijaloga -->
+    <string name="dialog_add_book_title">Dodaj novu knjigu</string>
+    <string name="dialog_edit_book_title">Uredi knjigu</string>
+    <string name="dialog_book_request_title">Zatraži knjigu</string>
+    <string name="dialog_edit_profile_title">Uredi profil</string>
+    <string name="dialog_logout_title">Odjava</string>
+    <string name="dialog_mark_notifications_title">Označi sve kao pročitano</string>
+    <string name="dialog_sending_request_title">Šalje se zahtjev</string>
+    <string name="dialog_request_success_title">Zahtjev poslan</string>
+    <string name="dialog_request_error_title">Greška pri slanju</string>
+    <string name="dialog_logout_error_title">Greška pri odjavi</string>
+
+    <!-- Poruke dijaloga -->
+    <string name="dialog_add_book_message">Želite li dodati novu knjigu u svoju kolekciju?</string>
+    <string name="dialog_edit_book_message">Želite li urediti knjigu \"%1$s\"?</string>
+    <string name="dialog_book_request_message">Želite li poslati zahtjev vlasniku knjige \"%1$s\" za pokretanje razgovora o ovoj knjizi?</string>
+    <string name="dialog_edit_profile_message">Želite li urediti podatke svojeg profila?</string>
+    <string name="dialog_logout_message">Jeste li sigurni da se želite odjaviti?</string>
+    <string name="dialog_mark_notifications_message">Označiti sve obavijesti kao pročitane? Ova radnja se ne može poništiti.</string>
+    <string name="dialog_sending_request_message">Šalje se vaš zahtjev vlasniku knjige. Molimo pričekajte.</string>
+    <string name="dialog_request_success_message">Vaš zahtjev je uspješno poslan! Vlasnik knjige će biti obaviješten.</string>
+    <string name="dialog_request_error_message">Slanje zahtjeva neuspješno: %1$s</string>
+    <string name="dialog_logout_error_message">Odjava neuspješna: %1$s</string>
+
+    <!-- Oznake gumbova -->
+    <string name="btn_add_book">Dodaj knjigu</string>
+    <string name="btn_edit">Uredi</string>
+    <string name="btn_edit_profile">Uredi profil</string>
+    <string name="btn_send_request">Pošalji zahtjev</string>
+    <string name="btn_start_chat">Pokreni razgovor</string>
+    <string name="btn_later">Poslije</string>
+    <string name="btn_logout">Odjavi se</string>
+    <string name="btn_mark_all">Označi sve</string>
+
+    <!-- Error Messages -->
+    <string name="no_book_selected">Nema odabrane knjige</string>
+    <!-- Request limit dialog strings -->
+    <string name="dialog_request_limit_title">Zahtjev nije moguć</string>
+    <string name="dialog_request_pending_message">Već imate aktivan zahtjev za ovu knjigu. Molimo pričekajte odgovor vlasnika.</string>
+    <string name="dialog_request_cooldown_message">Možete poslati novi zahtjev za ovu knjigu za %s.</string>
+    <string name="dialog_request_limit_generic">Trenutno ne možete poslati zahtjev za ovu knjigu.</string>
+
+<!--    end mainactivity-->
+
+    <!--  StartActivity  -->
+    <string name="login_success">Uspješna prijava</string>
+    <string name="login_failure">Greška: </string>
+    <string name="email_not_verified">Potvrdite svoju email adresu i prijavite se.</string>
+    <string name="access_token_success">Uspjeh: </string>
+
+    <!--    CameraActivity-->
+    <string name="camera_permission_denied">Dopuštenje za kameru je odbijeno</string>
+    <string name="storage_permission_denied">Dopuštenje za pohranu je odbijeno</string>
+    <string name="select_image_source">Odaberite izvor slike</string>
+    <string name="take_photo">Slikaj</string>
+    <string name="choose_from_gallery">Odaberi iz galerije</string>
+
+
+    <!-- ChatFragment -->
+    <string name="chat_with">Razgovor s: </string>
+    <string name="chat_default_title">Razgovor</string>
+    <string name="you">Vi</string>
+    <string name="other_user">Drugi korisnik</string>
+
+
+    <!-- ConversationsFragment -->
+    <!-- ConversationsFragment strings -->
+    <string name="default_user_name">Korisnik </string>
+    <string name="default_chat_placeholder">Razgovor</string>
+    <string name="error_socket_not_connected">Socket nije povezan, ne mogu učitati razgovore</string>
+    <string name="error_activity_not_mainactivity">Activity nije MainActivity</string>
+    <string name="error_user_profile_null">Korisnički profil je prazan</string>
+    <string name="error_cannot_load_chats">Ne mogu učitati razgovore</string>
+    <string name="error_activity_null">Activity je prazan, ne mogu ažurirati UI</string>
+    <string name="error_cannot_navigate">Ne mogu navigirati - activity nije MainActivity</string>
+    <string name="error_navigation_failed">Navigacija neuspješna</string>
+
+    <!-- Auth0Helper strings -->
+    <string name="error_failed_get_user">Neuspješno dohvaćanje korisnika: %1$d - %2$s</string>
+    <string name="error_could_not_read_error_body">Ne mogu pročitati error body</string>
+    <string name="error_failed_get_access_token">Neuspješno dohvaćanje access tokena: </string>
+    <string name="error_token_request_failed">Zahtjev za token neuspješan: %1$d - %2$s</string>
+
+<!--    HistoryFilters -->
+    <!-- UI Labels -->
+    <string name="ownership_title">Vlasništvo knjige</string>
+    <string name="exchange_status_title">Status razmjene</string>
+    <string name="reset_filters_title">Resetiraj filtere</string>
+    <string name="reset_filters_message">Jeste li sigurni da želite resetirati sve filtere?</string>
+    <string name="reset_button">Resetiraj</string>
+    <string name="cancel_button">Odustani</string>
+    <string name="ok_button">U redu</string>
+    <string name="ownership_label_mine">Moje razmjene (posuđeno od nekoga)</string>
+    <string name="ownership_label_others">Razmjene gdje sam posudio nekome</string>
+
+
+
+    <!--    BookFiltersHelper/ BookFiltersDialogHelper   -->
+    <string name="active_filters">Aktivni filteri: </string>
+    <string name="year_filter">Godina: </string>
+    <string name="pages_filter">Stranice: </string>
+    <string name="or"> ili </string>
+    <!--    /-->
+    <!-- Dialog Titles -->
+    <string name="dialog_apply_filters_title">Primijeni filtere</string>
+    <string name="dialog_reset_filters_title">Resetiraj filtere</string>
+    <string name="dialog_info_title">Informacija</string>
+    <string name="dialog_success_title">Uspjeh</string>
+    <string name="dialog_error_title">Greška</string>
+
+    <!-- Confirmation Messages -->
+    <string name="message_apply_filters_confirmation">Jeste li sigurni da želite primijeniti %d odabranih filtera? Ovo će ažurirati popis knjiga.</string>
+    <string name="message_reset_filters_confirmation">Jeste li sigurni da želite resetirati sve filtere? Ovo će ukloniti sve odabrane filtere i prikazati sve knjige.</string>
+    <string name="message_no_filters_selected">Trenutno nema odabranih filtera. Želite li nastaviti s prikazom svih knjiga?</string>
+
+    <!-- Success Messages -->
+    <string name="message_filters_applied_success">Filteri su uspješno primijenjeni! %d filtera je sada aktivno.</string>
+    <string name="message_filters_reset_success">Svi filteri su uspješno resetirani. Prikazuju se sve knjige.</string>
+
+    <!-- Error Messages -->
+    <string name="error_loading_filters">Došlo je do greške prilikom učitavanja opcija filtera. Molimo pokušajte ponovno.</string>
+    <string name="error_applying_filters">Došlo je do greške prilikom primjene filtera. Molimo pokušajte ponovno.</string>
+    <string name="error_resetting_filters">Došlo je do greške prilikom resetiranja filtera. Molimo pokušajte ponovno.</string>
+
+    <!-- Button Labels -->
+    <string name="btn_apply">Primijeni</string>
+    <string name="btn_reset">Resetiraj</string>
+    <string name="btn_cancel">Odustani</string>
+    <string name="btn_ok">U redu</string>
+
+    <!-- Notification Helper -->
+    <string name="new_book_request_title">Novi zahtjev za knjigu</string>
+    <string name="book_request_message"> traži vašu knjigu: </string>
+    <string name="notification_sent_success">Notifikacija poslana uspješno</string>
+    <string name="notification_send_error">Greška slanja notifikacije: </string>
+    <string name="network_error">Mreža greška: </string>
+
+    <!-- HomeFragment-->
+    <string name="search_hint">Traži po autoru ili naslovu</string>
+
+
+    <!--    MyBooksFragment -->
+    <string name="no_books_available_filtering">Nema knjiga za filtriranje.</string>
+
+
+    <!--    NotificationsViewModel-->
+    <string name="user_id_not_set">Korisnički ID nije postavljen!</string>
+    <string name="notifications_fetch_success">Uspješan dohvat notifikacija: %d</string>
+    <string name="notifications_fetch_failed">Neuspješan odgovor: %d</string>
+    <string name="api_call_error">Greška prilikom API poziva: %s</string>
+    <string name="notification_marked_read">Notifikacija označena kao pročitana</string>
+    <string name="mark_read_error">Greška označavanja kao pročitano: %s</string>
+    <string name="all_notifications_marked_read">Sve notifikacije označene kao pročitane</string>
+    <string name="mark_all_read_error">Greška označavanja svih kao pročitano: %s</string>
+
+    <string name="response_message">Vaš zahtjev je prihvaćen/odbačen</string>
+    <string name="response_title">Odgovor na zahtjev</string>
+    <string name="user_name">Ime korisnika</string>
+    <string name="replace_image">Promjeni sliku</string>
+    <string name="last_message_preview">Zadnja poruka..</string>
+    <string name="book_request_msg">Pozdrav, htjela bih posuditi ovu knjigu.</string>
+    <string name="on_hold">Čekanje odgovora</string>
+    <string name="chat_title">Razgovor </string>
+    <string name="knjigomat">KNJIGOMAT </string>
+    <string name="welcome">Dobrodošli! </string>
+    <string name="add_books_note">Dodaj knjige u svoju biblioteku! </string>
+    <string name="exchange_books_note">Razmjenjuj knjige sa drugim korisnicima! </string>
+    <string name="manage_books_note">Vodi svoju privatnu kolekciju! </string>
+    <string name="track_borrowings_books_note">Prati evidenciju posuđenih knjiga! </string>
+    <string name="btn_start">START</string>
+    <string name="type_message">Napiši poruku..</string>
+    <string name="filter_by">Filtriraj po:</string>
+    <string name="condition">Stanje knjige</string>
+    <string name="reset_filters">RESETIRAJ</string>
+    <string name="your_conversations">Moji razgovori</string>
+    <string name="no_conversations_yet">Još nema razgovora</string>
+    <string name="no_notifications_yet">Još nema notifikacija.</string>
+    <string name="no_history_yet">Nema povijesti razmjena.</string>
+
+    <string name="no_private_books">Nemate nijednu privatnu knjigu.</string>
+    <string name="private_collection">PRIVATNA KOLEKCIJA</string>
+    <string name="exchange_in_progress">U tijeku</string>
+    <string name="exchange_completed">Završena</string>
+    <string name="exchange_cancelled">Otkazana</string>
+    <string name="lender">Vlasnik</string>
+    <string name="borrower">Posuđivač</string>
+
+
+    <!-- Dodajte ove stringove u vaš strings.xml file -->
+
+    <!-- Ownership filters -->
+    <string name="my_book">Moja knjiga</string>
+    <string name="from_someone_else">Od nekog drugog</string>
+    <string name="not_selected">Nije odabran</string>
+
+    <!-- Exchange status filters -->
+    <string name="status_pending">Na čekanju</string>
+    <string name="status_completed">Završeno</string>
+    <string name="status_cancelled">Otkazano</string>
+    <string name="status_in_progress">U tijeku</string>
+    <string name="status_requested">Zahtjevano</string>
+
+
+
+
+
+
+    <!--    Profile -->
+    <string name="failure_message">Greška: %s</string>
+    <string name="location_default">lokacija nije postavljena</string>
+    <string name="request_sent_email">Zahtjev poslan na email</string>
+    <string name="successful">Uspješno</string>
+    <string name="dialog_save_message">Želite li spremiti promjene profila?</string>
+    <string name="dialog_password_title">Promjena lozinke</string>
+    <string name="dialog_password_message">Poslat ćemo vam email s instrukcijama za promjenu lozinke. Nastaviti?</string>
+    <string name="btn_send">Pošalji</string>
+    <string name="edit_profile">Uredi profil</string>
+    <string name="first_name">Ime</string>
+    <string name="last_name">Prezime</string>
+    <string name="location">Lokacija</string>
+    <string name="user_email">Moj email</string>
+
+
+    <!--    Book Utils  -->
+    <!-- Book Genres -->
+    <string name="genre_roman">Roman / Beletristika</string>
+    <string name="genre_thriller">Triler / Krimić</string>
+    <string name="genre_horror">Horor</string>
+    <string name="genre_fantasy">Fantastika / SF</string>
+    <string name="genre_romance">Ljubavni / Romantika</string>
+    <string name="genre_historical">Povijesni / Biografije</string>
+    <string name="genre_psychology">Psihologija / Samopomoć</string>
+    <string name="genre_publicistic">Publicistika / Eseji</string>
+    <string name="genre_children">Dječje / Mladež</string>
+
+    <!--    CreateBookFragment  -->
+    <!-- Image Management -->
+    <string name="image_removed">Slika uklonjena</string>
+    <string name="image_added">Slika dodana</string>
+    <string name="error_adding_image">Greška pri dodavanju slike</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galerija</string>
+    <string name="camera_permission_required">Potrebna dozvola za kameru</string>
+    <string name="camera_not_available">Kamera trenutno nije dostupna</string>
+
+
+    <!-- Form Validation -->
+    <string name="title_required">Naslov je obavezan</string>
+    <string name="author_required">Autor je obavezan</string>
+    <string name="valid_year_required">Molimo unesite važeću godinu</string>
+    <string name="valid_page_count_required">Molimo unesite važeći broj stranica</string>
+
+    <!-- Book Creation -->
+    <string name="user_not_authenticated">Korisnik nije autentificiran</string>
+    <string name="error_creating_book">Greška pri stvaranju knjige: %s</string>
+    <string name="book_created_successfully">Knjiga i slike su uspješno stvorene</string>
+    <string name="dialog_create_book_title">Dodaj knjigu</string>
+    <string name="dialog_create_book_message">Želite li dodati ovu knjigu?</string>
+    <string name="btn_create">Dodaj</string>
+    <string name="error_getting_image">Greška pri odabiru slike</string>
+    <string name="message_book_created_success">Knjiga je uspješno dodana.</string>
+    <string name="dialog_book_creation_error_title">Dodavanje knjige nije uspjelo</string>
+    <string name="message_book_creation_error">Došlo je do greške prilikom dodavanja knjige. %s Pokušajte ponovno.</string>
+    <!-- Validation Messages -->
+    <string name="validation_title_min_length">Naslov mora imati barem 2 znakova</string>
+    <string name="validation_title_max_length">Naslov može imati maksimalno 200 znakova</string>
+    <string name="validation_author_min_length">Autor mora imati barem 2 znakova</string>
+    <string name="validation_author_max_length">Autor može imati maksimalno 100 znakova</string>
+    <string name="validation_year_required">Godina izdanja je obavezna</string>
+    <string name="validation_publisher_required">Izdavač je obavezan</string>
+    <string name="validation_publisher_min_length">Izdavač mora imati barem 2 znakova</string>
+    <string name="validation_language_required">Jezik je obavezan</string>
+    <string name="validation_language_min_length">Jezik mora imati barem 2 znakova</string>
+    <string name="validation_pages_required">Broj stranica je obavezan</string>
+    <string name="validation_pages_max">Knjiga ne može imati više od 10,000 stranica</string>
+    <string name="validation_description_max">Opis može imati maksimalno 1000 znakova</string>
+    <string name="validation_notes_max">Bilješke mogu imati maksimalno 500 znakova</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_validation_title">Greške u validaciji</string>
+    <string name="dialog_validation_message">Molimo ispravite sljedeće greške:</string>
+    <string name="dialog_no_images_title">Nema slika</string>
+    <string name="dialog_no_images_message">Niste dodali ni jednu sliku knjige. Preporučujemo dodavanje barem jedne slike. Želite li kreirati knjigu bez slika?</string>
+    <string name="btn_create_without_images">Kreiraj bez slika</string>
+    <string name="btn_add_images">Dodaj slike</string>
+    <string name="dialog_summary_title">Potvrda kreiranja knjige</string>
+    <string name="dialog_summary_message">Molimo provjerite podatke prije kreiranja:</string>
+
+    <string name="summary_title">📖 Naslov: %1$s</string>
+    <string name="summary_author">✍️ Autor: %1$s</string>
+    <string name="summary_year">📅 Godina: %1$s</string>
+    <string name="summary_publisher">🏢 Izdavač: %1$s</string>
+    <string name="summary_language">🌍 Jezik: %1$s</string>
+    <string name="summary_pages">📄 Stranice: %1$s</string>
+    <string name="summary_genre">🏷️ Žanr: %1$s</string>
+    <string name="summary_condition">⚖️ Stanje: %1$s</string>
+    <string name="summary_visibility">👁️ Vidljivost: %1$s</string>
+    <string name="summary_status">📊 Status: %1$s</string>
+    <string name="summary_images">📸 Slike: %1$d</string>
+    <string name="create_book">Kreiraj knjigu</string>
+
+    <!-- Debug/Log Messages -->
+    <string name="error_creating_image_file">Greška pri stvaranju datoteke slike</string>
+    <string name="error_handling_image_selection">Greška pri rukovanju odabirom slike</string>
+    <string name="error_processing_image">Greška pri obradi slike %d</string>
+    <string name="error_creating_file_from_uri">Greška pri stvaranju datoteke iz URI-ja</string>
+    <!--    CBF end -->
+
+    <!--    DetailsBookFragment/ EditBookFragment -->
+    <string name="debug_received_book_id">Primljen bookId: %d</string>
+    <string name="debug_invalid_book_id">Neispravni bookId</string>
+    <string name="debug_observer_triggered">Observer pokrenut s knjigom: %s</string>
+    <string name="debug_image_paths_count">Broj putanja slika: %d</string>
+    <string name="debug_image_path">Putanja slike %d: %s</string>
+    <string name="debug_no_images_found">Nisu pronađene slike, postavljam prazan adapter</string>
+    <string name="debug_viewpager_page_changed">ViewPager stranica promijenjena na poziciju: %d</string>
+    <string name="debug_viewpager_scrolled">ViewPager pomaknut na poziciju: %d, offset: %f</string>
+    <string name="debug_deleting_image_position">Brisanje slike na poziciji: %d</string>
+
+    <string name="dialog_delete_book_title">Obriši knjigu</string>
+    <string name="dialog_delete_book_message">Jeste li sigurni da želite obrisati knjigu "%1$s" nepovratno? This action cannot be undone.</string>
+    <string name="message_book_deleted_success">Knjiga uspješno obrisana!</string>
+    <string name="debug_book_deleted">Obrisana knjiga: %1$s</string>
+    <string name="error_deleting_book">Greška pri brisanju knjige: %1$s</string>
+    <string name="dialog_book_delete_error_title">Greska pri brisanju</string>
+    <string name="message_book_delete_error">Neuspješno brisanje knjige: %1$s</string>
+
+    <!-- Dialog za nedostupnu knjigu -->
+    <string name="dialog_book_unavailable_title">Knjiga nije dostupna</string>
+    <string name="dialog_book_unavailable_message">Knjiga "%1$s" trenutno nije dostupna za posudbu jer je zauzeta.</string>
+
+    <!--    /-->
+    <string name="reading_status">Status dostupnosti</string>
+    <string name="visibility">Vidljivost</string>
+    <string name="book_condition">Stanje knjige</string>
+    <string name="book_settings">Postavke knjige</string>
+    <string name="personal_notes">Osobne bilješke</string>
+    <string name="book_description">Opis knjige</string>
+    <string name="description_and_notes">Opis i bilješke</string>
+    <string name="page_count">Broj stranica</string>
+    <string name="language">Jezik</string>
+    <string name="publication_year">Godina</string>
+    <string name="publisher">Izdavač</string>
+    <string name="genre">Žanr</string>
+    <string name="author">Autor</string>
+    <string name="title_book">Naslov knjige</string>
+    <string name="basic_information">Osnovne informacije</string>
+    <string name="publication_details">Detalji publikacije</string>
+    <string name="book_images">Slike knjige</string>
+
+    <!-- EditBookFragment alerts and dialogs -->
+    <string name="dialog_save_changes_title">Spremi</string>
+    <string name="dialog_save_changes_message">Želite li spremiti promjene u ovoj knjizi?</string>
+    <string name="dialog_discard_changes_title">Nespremljene promjene</string>
+    <string name="dialog_discard_changes_message">Imate nespremljene promjene. Jeste li sigurni da ih želite odbaciti?</string>
+    <string name="dialog_delete_image_title">Obriši sliku</string>
+    <string name="dialog_delete_image_message">Jeste li sigurni da želite obrisati ovu sliku? Ova akcija se ne može poništiti.</string>
+    <string name="dialog_permission_required_title">Potrebna dozvola za kameru</string>
+    <string name="dialog_permission_required_message">Potreban je pristup kameri za fotografiranje vaših knjiga. Dozvolu možete odobriti u postavkama aplikacije.</string>
+    <string name="dialog_validation_error_title">Neispravni podaci</string>
+    <string name="dialog_network_error_title">Greška veze</string>
+    <string name="dialog_book_update_error_title">Ažuriranje neuspješno</string>
+    <string name="dialog_image_delete_error_title">Brisanje neuspješno</string>
+    <string name="dialog_image_upload_error_title">Dodavanje neuspješno</string>
+    <string name="dialog_image_replace_error_title">Zamjena neuspješna</string>
+
+    <!-- Messages -->
+    <string name="message_book_updated_success">Podaci o knjizi su uspješno ažurirani!</string>
+    <string name="message_book_update_error">Ažuriranje knjige nije uspjelo. Molimo provjerite internetsku vezu i pokušajte ponovno.\n\nDetalji: %s</string>
+    <string name="message_image_deleted_success">Slika je uspješno obrisana</string>
+    <string name="message_image_delete_error">Brisanje slike nije uspjelo. Molimo pokušajte ponovno.\n\nDetalji: %s</string>
+    <string name="message_image_uploaded_success">Slika je uspješno dodana</string>
+    <string name="message_image_upload_error">Dodavanje slike nije uspjelo. Molimo pokušajte ponovno.\n\nDetalji: %s</string>
+    <string name="message_image_replaced_success">Slika je uspješno zamijenjena</string>
+    <string name="message_image_replace_error">Zamjena slike nije uspjela. Molimo pokušajte ponovno.\n\nDetalji: %s</string>
+    <string name="message_validation_errors">Molimo ispravite sljedeće greške:\n\n%s</string>
+
+    <!-- Validation errors -->
+    <string name="validation_title_required">• Naslov je obavezan\n</string>
+    <string name="validation_author_required">• Autor je obavezan\n</string>
+    <string name="validation_year_range">• Godina izdanja mora biti između 1000 i 2025\n</string>
+    <string name="validation_year_number">• Godina izdanja mora biti broj\n</string>
+    <string name="validation_pages_positive">• Broj stranica mora biti veći od 0\n</string>
+    <string name="validation_pages_number">• Broj stranica mora biti broj\n</string>
+
+    <!-- Buttons -->
+    <string name="btn_save">Spremi</string>
+    <string name="btn_discard">Odbaci</string>
+    <string name="btn_delete">Obriši</string>
+    <string name="btn_retry">Pokušaj ponovno</string>
+    <string name="btn_settings">Postavke</string>
+    <string name="btn_yes">Da</string>
+    <string name="btn_no">Ne</string>
+    <string name="debug_book_loaded">Knjiga uspješno učitana: %s</string>
+    <string name="debug_book_updated">Knjiga uspješno ažurirana: %s</string>
+    <string name="debug_image_upload_success">Uspješno učitavanje slike: %s</string>
+    <string name="debug_image_replace_success">Uspješna zamjena slike: %s</string>
+    <string name="image_uploaded_successfully">Slika je uspješno učitana</string>
+    <string name="error_uploading_image">Greška pri učitavanju slike: %s</string>
+    <string name="image_replaced_successfully">Slika je uspješno zamijenjena</string>
+    <string name="error_replacing_image">Greška pri zamjeni slike: %s</string>
+    <string name="error_no_book_data">Greška: Nema podataka o knjizi za spremanje</string>
+    <string name="book_updated_successfully">Knjiga je uspješno ažurirana</string>
+    <string name="error_updating_book">Greška pri ažuriranju knjige: %s</string>
+    <string name="invalid_book_id">Neispravni ID knjige</string>
+    <string name="error_loading_book_data">Greška pri učitavanju podataka o knjizi</string>
+
+
+    <string name="com_auth0_client_id">iollgxeN6HqKr7jdCK0kx08TWtt4yI3S</string>
+        <string name="com_auth0_domain">dev-l82m10ihxsexnmhy.eu.auth0.com</string>
+        <string name="com_auth0_scheme">demo</string>
+        <string name="book_image">Slike knjige</string>
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="dummy_button">Dummy Button</string>
+        <string name="dummy_content">DUMMY\nCONTENT</string>
+        <!-- TODO: Remove or change this placeholder text -->
+
+        <string name="book_cover">Book Cover</string>
+        <string name="date_icon">Date Icon</string>
+        <string name="users_icon">Users Icon</string>
+        <string name="more_actions">More Actions</string>
+</resources>

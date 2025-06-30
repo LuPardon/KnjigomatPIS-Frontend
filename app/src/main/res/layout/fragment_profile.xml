@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.profile.ProfileFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Ikona korisnika -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="User icon"
+                android:id="@+id/ivProfilePicture"
+                android:src="@drawable/ic_menu_user" />
+
+            <!-- Ime i lokacija -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unknown_user"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_email"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Statistika knjiga -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvBorrowedCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_borrowed" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvAvailableCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_available" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Privatna kolekcija naslov -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/private_collection"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- RecyclerView za privatne knjige -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPrivateBooks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:nestedScrollingEnabled="true" />
+
+            <!-- Poruka kada nema privatnih knjiga -->
+            <TextView
+                android:id="@+id/tvNoPrivateBooks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_private_books"
+                android:textSize="14sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+

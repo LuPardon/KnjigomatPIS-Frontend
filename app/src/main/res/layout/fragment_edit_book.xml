@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bookEditScroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background_light"
+    tools:context=".ui.detailsBook.EditBookFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
+
+        <!-- Header Card with Image ViewPager -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_images"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="12dp" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/imageViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="@drawable/rounded_background_light"
+                    app:layout_constraintDimensionRatio="16:10" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Basic Information Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/basic_information"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_teal"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Title -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/title_book"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:startIconDrawable="@drawable/ic_book"
+                    app:startIconTint="@color/primary_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapWords"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Author -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/author"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:startIconDrawable="@drawable/ic_person"
+                    app:startIconTint="@color/primary_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editAuthor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapWords"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Genre -->
+                <!-- Condition Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_container_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/genre"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerGenre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/modern_spinner_background"
+                        android:minHeight="48dp"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Publisher -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:hint="@string/publisher"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editPublisher"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text|textCapWords"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                </LinearLayout>
+
+                <!-- Publisher and Language Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Publication Year -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:hint="@string/publication_year"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editPublicationYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Language -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:hint="@string/language"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editLanguage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text|textCapWords"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <!-- Page Count -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/page_count"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:startIconDrawable="@drawable/ic_pages"
+                    app:startIconTint="@color/primary_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editPageCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Description Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_and_notes"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_teal"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Description -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="@string/book_description"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:startIconDrawable="@drawable/ic_description"
+                    app:startIconTint="@color/primary_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:lines="4"
+                        android:maxLines="6"
+                        android:scrollbars="vertical"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Notes -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personal_notes"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:startIconDrawable="@drawable/ic_note"
+                    app:startIconTint="@color/primary_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:lines="3"
+                        android:maxLines="5"
+                        android:scrollbars="vertical"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Settings Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_settings"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_teal"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Condition Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_container_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/book_condition"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerCondition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/modern_spinner_background"
+                        android:minHeight="48dp"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+                <!-- Visibility Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_container_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/visibility"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerVisibility"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/modern_spinner_background"
+                        android:minHeight="48dp"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+                <!-- Status Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_container_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/reading_status"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/modern_spinner_background"
+                        android:minHeight="48dp"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <!-- Primary Actions Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp"
+                android:weightSum="2">
+
+                <!-- Cancel Button - Outlined style with proper colors -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCancel"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_cancel"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#6B7280"
+                    android:textAllCaps="false"
+                    app:cornerRadius="16dp"
+                    app:strokeColor="#6B7280"
+                    app:strokeWidth="2dp"
+                    app:icon="@drawable/ic_close"
+                    app:iconTint="#6B7280"
+                    app:iconGravity="textStart"
+                    android:elevation="2dp"
+                    app:rippleColor="#E5E7EB" />
+
+                <!-- Save Button - Filled style with proper colors -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSave"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:backgroundTint="@color/primary_color"
+                    android:text="@string/dialog_save_changes_title"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_save"
+                    app:iconTint="@android:color/white"
+                    app:iconGravity="textStart"
+                    android:elevation="4dp"
+                    app:rippleColor="#004D40" />
+
+            </LinearLayout>
+
+            <!-- Delete Button - Outlined style with red colors -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonDelete"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="@string/dialog_delete_book_title"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#DC2626"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp"
+                app:strokeColor="#DC2626"
+                app:strokeWidth="2dp"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="#DC2626"
+                app:iconGravity="textStart"
+                android:elevation="1dp"
+                android:layout_marginTop="4dp"
+                app:rippleColor="#FECACA" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+
+
+
+

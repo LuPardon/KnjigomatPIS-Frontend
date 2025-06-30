@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <!-- Container za poruku - mijenja se ovisno o pošiljatelju -->
+    <LinearLayout
+        android:id="@+id/ll_message_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Spacer za lijevo poravnanje (vidljiv samo za tuđe poruke) -->
+        <View
+            android:id="@+id/spacer_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <!-- Oblačić poruke -->
+        <LinearLayout
+            android:id="@+id/ll_message_bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/surface_white"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:maxWidth="280dp">
+
+            <!-- Ime pošiljatelja (vidljivo samo za tuđe poruke) -->
+            <TextView
+                android:id="@+id/tv_sender_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="4dp"
+                android:visibility="gone" />
+
+            <!-- Sadržaj poruke -->
+            <TextView
+                android:id="@+id/tv_message_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:lineSpacingMultiplier="1.1" />
+
+            <!-- Vrijeme slanja -->
+            <TextView
+                android:id="@+id/tv_message_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/text_hint"
+                android:layout_marginTop="4dp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <!-- Spacer za desno poravnanje (vidljiv samo za moje poruke) -->
+        <View
+            android:id="@+id/spacer_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

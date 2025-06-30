@@ -1,0 +1,43 @@
+<resources>
+
+    <style name="Widget.Theme.KnjigomatPIS.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+    <!-- Custom Alert Dialog Style -->
+    <style name="CustomAlertDialog" parent="Theme.Material3.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorSecondary">@color/design_default_color_secondary_variant</item>
+        <item name="android:windowTitleStyle">@style/CustomDialogTitle</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/CustomDialogTitle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/CustomDialogBody</item>
+        <item name="buttonBarButtonStyle">@style/CustomDialogButton</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+
+    <!-- Dialog Title Style -->
+    <style name="CustomDialogTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Dialog Body Style -->
+    <style name="CustomDialogBody" parent="MaterialAlertDialog.Material3.Body.Text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <!-- Dialog Button Style -->
+    <style name="CustomDialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:minHeight">40dp</item>
+    </style>
+
+</resources>

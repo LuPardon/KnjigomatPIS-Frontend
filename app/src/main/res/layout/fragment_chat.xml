@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:id="@+id/fragment_chat_container"
+    android:orientation="vertical"
+    android:background="@color/background_light"
+    tools:context=".ui.conversations.ChatFragment">
+
+    <!-- Chat Title Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_header_background"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/tv_chat_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chat_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_on_teal"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <!-- Messages Area with RecyclerView -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_input_background"
+        android:orientation="vertical"
+        android:elevation="1dp"
+        android:layout_marginBottom="12dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_messages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_message_bubble" />
+
+    </LinearLayout>
+
+    <!-- Message Input Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_input_area_background"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/et_message_input"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/rounded_input_background"
+            android:hint="@string/type_message"
+            android:textColorHint="@color/text_hint"
+            android:textColor="@color/text_primary"
+            android:inputType="textCapSentences"
+            android:autofillHints="textMessage"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:elevation="1dp" />
+
+        <Button
+            android:id="@+id/btn_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/btn_send"
+            android:textColor="@color/text_on_teal"
+            android:background="@drawable/rounded_button_background"
+            android:minWidth="80dp"
+            android:textStyle="bold"
+            android:elevation="2dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

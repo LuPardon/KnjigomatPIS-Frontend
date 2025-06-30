@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <!-- Left spacer for right alignment (my messages) -->
+    <View
+        android:id="@+id/spacer_left"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:visibility="gone" />
+
+    <!-- Message bubble container -->
+    <LinearLayout
+        android:id="@+id/ll_message_bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/message_bubble_received"
+        android:maxWidth="280dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Sender name (only for received messages) -->
+        <TextView
+            android:id="@+id/tv_sender_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <!-- Image view -->
+        <ImageView
+            android:id="@+id/iv_message_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_background"
+            android:scaleType="centerCrop" />
+
+        <!-- Text content (for images with captions) -->
+        <TextView
+            android:id="@+id/tv_message_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <!-- Time stamp -->
+        <TextView
+            android:id="@+id/tv_message_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <!-- Right spacer for left alignment (received messages) -->
+    <View
+        android:id="@+id/spacer_right"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:visibility="visible" />
+
+</LinearLayout>

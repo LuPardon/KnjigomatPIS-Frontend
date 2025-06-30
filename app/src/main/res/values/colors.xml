@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="teal_500">#297373</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#f77c7c</color>
+    <color name="unavailable_color">#D32F2F</color>
+
+        <!-- Primary teal colors -->
+        <color name="primary_color">#009688</color>
+        <color name="secondary_color">#f77c7c</color>
+        <color name="primary_teal">#009688</color>
+        <color name="primary_teal_dark">#00695C</color>
+        <color name="primary_teal_light">#4DB6AC</color>
+
+        <!-- Accent teal colors -->
+        <color name="teal_accent">#26A69A</color>
+        <color name="teal_accent_light">#80CBC4</color>
+        <color name="teal_accent_dark">#00897B</color>
+
+        <!-- Background and surface colors -->
+        <color name="background_light">#F5F5F5</color>
+        <color name="surface_white">#FFFFFF</color>
+        <color name="surface_teal_light">#E0F2F1</color>
+
+        <!-- Text colors -->
+        <color name="text_primary">#212121</color>
+        <color name="text_secondary">#757575</color>
+        <color name="text_hint">#BDBDBD</color>
+        <color name="text_on_teal">#FFFFFF</color>
+
+    <!-- Dialog specific colors -->
+        <color name="error_color">#F44336</color>
+        <color name="success_color">#4CAF50</color>
+        <color name="warning_color">#FF9800</color>
+        <color name="info_color">#2196F3</color>
+
+
+    <!-- Legacy colors (converted to teal variants) -->
+        <color name="unread_notification_background">#FFE0F2F1</color>
+        <color name="light_blue_600">#FF26A69A</color> <!-- Now teal -->
+        <color name="light_blue_900">#FF00695C</color> <!-- Now dark teal -->
+        <color name="light_blue_A200">#FF80CBC4</color> <!-- Now light teal -->
+        <color name="light_blue_A400">#FF4DB6AC</color> <!-- Now medium teal -->
+        <color name="black_overlay">#66000000</color>
+
+        <!-- Border and divider colors -->
+        <color name="border_light">#E0E0E0</color>
+        <color name="border_teal">#B2DFDB</color>
+        <color name="divider_color">#EEEEEE</color>
+    <color name="text_tertiary">#BDBDBD</color>
+    <color name="icon_tint">#9E9E9E</color>
+    <color name="genre_text">#5D4037</color>
+
+    <!-- Dialog background colors -->
+    <color name="dialog_background">#FFFFFF</color>
+    <color name="dialog_background_dark">#1E1E1E</color>
+
+    <!-- Button colors -->
+    <color name="dialog_button_positive">#FF26A69A</color>
+    <color name="dialog_button_negative">#757575</color>
+    <color name="dialog_button_destructive">#F44336</color>
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.knjigomatpis.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_create_book"
+        android:name="com.example.knjigomatpis.ui.detailsBook.CreateBookFragment"
+        android:label="Create Book"
+        tools:layout="@layout/fragment_create_book" />
+
+    <fragment
+        android:id="@+id/nav_edit_book"
+        android:name="com.example.knjigomatpis.ui.detailsBook.EditBookFragment"
+        android:label="Edit Book"
+        tools:layout="@layout/fragment_edit_book" />
+
+    <fragment
+        android:id="@+id/nav_myBooks"
+        android:name="com.example.knjigomatpis.ui.myBooks.MyBooksFragment"
+        android:label="@string/menu_my_books"
+        tools:layout="@layout/fragment_my_books" >
+        <action
+            android:id="@+id/action_create_book"
+            app:destination="@id/nav_create_book" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_details_book"
+        android:name="com.example.knjigomatpis.ui.detailsBook.DetailsBookFragment"
+        android:label="Book details"
+        tools:layout="@layout/fragment_details_book">
+        <argument
+            android:name="bookId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_edit_book"
+            app:destination="@id/nav_edit_book" />
+        <action
+            android:id="@+id/action_details_to_chat"
+            app:destination="@id/nav_chat_single" />
+    </fragment>
+
+    <!-- GLAVNI CONVERSATIONS FRAGMENT - ovo je ono što se otvara iz side menu -->
+    <fragment
+        android:id="@+id/nav_conversations"
+        android:name="com.example.knjigomatpis.ui.conversations.ConversationsFragment"
+        android:label="@string/menu_chats"
+        tools:layout="@layout/fragment_conversations">
+    <action
+        android:id="@+id/action_conversations_to_chat"
+        app:destination="@id/nav_chat_single" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.example.knjigomatpis.ui.notifications.NotificationsFragment"
+        android:label="@string/menu_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notifications_to_chat"
+            app:destination="@id/nav_chat_single" />
+    </fragment>
+
+    <!-- POJEDINAČNI CHAT FRAGMENT -->
+    <fragment
+        android:id="@+id/nav_chat_single"
+        android:name="com.example.knjigomatpis.ui.conversations.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat">
+        <!-- Može se vratiti na conversations -->
+        <action
+            android:id="@+id/action_chat_to_conversations"
+            app:destination="@id/nav_conversations" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.knjigomatpis.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile">
+    <action
+        android:id="@+id/action_profile_to_editProfile"
+        app:destination="@id/nav_edit_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_edit_profile"
+        android:name="com.example.knjigomatpis.ui.profile.EditProfileFragment"
+        android:label="Edit profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_open_profile_after_update"
+            app:destination="@id/nav_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.example.knjigomatpis.ui.exchangeHistory.HistoryExchangeFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history_exchange" />
+
+</navigation>

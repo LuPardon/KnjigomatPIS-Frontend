@@ -1,0 +1,134 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!-- Fiksni naslov na vrhu -->
+    <TextView
+        android:id="@+id/filterHeader"
+        android:text="@string/filter_by"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/filterScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/applyFiltersBtn"
+        android:paddingTop="48dp"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Placeholder containers za dinamičke checkboxe -->
+        <TextView
+            android:text="@string/genre"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/genreCheckboxContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/publisher"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/publisherCheckboxContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/publication_year"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Raspon godina izdanja -->
+        <LinearLayout
+            android:id="@+id/yearRangeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp" />
+
+        <TextView
+            android:text="@string/condition"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/conditionCheckboxContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/language"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/languageCheckboxContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/page_count"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Raspon broja stranica -->
+        <LinearLayout
+            android:id="@+id/pageRangeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/applyFiltersBtn"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="0dp"
+        android:text="@string/btn_apply" />
+
+    <Button
+        android:id="@+id/resetFiltersBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/reset_filters"
+        android:layout_alignParentRight="true"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

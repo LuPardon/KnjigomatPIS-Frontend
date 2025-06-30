@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".StartActivity">
+
+        <ImageButton
+            android:id="@+id/languageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/circular_button_background"
+            android:contentDescription="@string/change_language"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flag_hr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Glavni naslov -->
+        <TextView
+            android:id="@+id/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif"
+            android:text="@string/knjigomat"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#009688"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/photoStart"
+            android:layout_width="306dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainTitle"
+            android:src="@drawable/book_colors"
+            tools:ignore="ContentDescription"/>
+
+        <!-- Podnaslov -->
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:focusedByDefault="false"
+            android:fontFamily="serif"
+            android:text="@string/welcome"
+            android:textAlignment="center"
+            android:textColor="#F44336"
+            android:textSize="48sp"
+            android:typeface="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photoStart" />
+
+        <!-- Popis pogodnosti -->
+        <LinearLayout
+            android:id="@+id/benefits"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <CheckedTextView
+                android:id="@+id/firstThing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:checkMark="@android:drawable/btn_star"
+                android:checkMarkTint="#FFEB3B"
+                android:fontFamily="serif"
+                android:text="@string/add_books_note"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:typeface="normal" />
+
+            <CheckedTextView
+                android:id="@+id/secondThing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:checkMark="@android:drawable/btn_star"
+                android:checkMarkTint="#FFEB3B"
+                android:fontFamily="serif"
+                android:text="@string/exchange_books_note"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:typeface="normal" />
+
+            <CheckedTextView
+                android:id="@+id/thirdThing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:checkMark="@android:drawable/btn_star"
+                android:checkMarkTint="#FFEB3B"
+                android:checked="true"
+                android:fontFamily="serif"
+                android:text="@string/manage_books_note"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:typeface="normal" />
+
+            <CheckedTextView
+                android:id="@+id/fourthThing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:checkMark="@android:drawable/btn_star"
+                android:checkMarkTint="#FFEB3B"
+                android:fontFamily="serif"
+                android:text="@string/track_borrowings_books_note"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:typeface="normal" />
+
+        </LinearLayout>
+
+        <!-- Gumb za početak -->
+        <Button
+            android:id="@+id/auth_button"
+            android:layout_width="141dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#009688"
+            android:text="@string/btn_start"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benefits" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+  </ScrollView>

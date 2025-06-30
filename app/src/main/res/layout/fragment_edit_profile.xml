@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".ui.profile.EditProfileFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Ikona korisnika -->
+            <ImageView
+                android:id="@+id/ivProfilePicture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="User icon"
+                android:src="@drawable/ic_menu_user" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/user_email"
+                android:textSize="14sp" />
+
+            <!-- Naslov -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/edit_profile"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Ime -->
+            <EditText
+                android:id="@+id/editFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Prezime -->
+            <EditText
+                android:id="@+id/editLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Lokacija -->
+            <EditText
+                android:id="@+id/editLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/location"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Spremi -->
+            <Button
+                android:id="@+id/btnSaveProfile"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_save" />
+
+            <!-- Postavke -->
+            <ImageButton
+                android:id="@+id/imageBtnResetPassword"
+                android:layout_width="123dp"
+                android:layout_height="43dp"
+                android:contentDescription="@string/dialog_password_title"
+                android:src="@drawable/reset_password"
+                android:scaleType="centerInside"
+                android:padding="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
