@@ -30,7 +30,9 @@
             android:textColor="@color/text_on_teal"
             android:gravity="center_vertical" />
 
+
     </LinearLayout>
+
 
     <!-- Messages Area with RecyclerView -->
     <LinearLayout
@@ -40,7 +42,28 @@
         android:background="@drawable/rounded_input_background"
         android:orientation="vertical"
         android:elevation="1dp"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="12dp"
+        android:gravity="center">
+
+        <!-- Loading indicator for chat messages -->
+        <ProgressBar
+            android:id="@+id/progressBarChatLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- Error message -->
+        <TextView
+            android:id="@+id/tvChatError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            android:padding="16dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_messages"
@@ -50,6 +73,7 @@
             android:scrollbars="vertical"
             android:clipToPadding="false"
             tools:listitem="@layout/item_message_bubble" />
+
 
     </LinearLayout>
 

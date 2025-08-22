@@ -8,9 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static final String EMULATOR_BASE_URL = "http://10.0.2.2:3000/api/"; // za emulator
-    private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.5.25:3000/api/"; // FAKS moja adresa  IP-ja
+//    private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.5.25:3000/api/"; // FAKS moja adresa  IP-ja
 //    private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.100.178:3000/api/"; // POSAO moja adresa IP-ja
-//    private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.4.235:3000/api/"; //Dom
+    private static final String LOCAL_NETWORK_BASE_URL = "http://192.168.1.23:3000/api/"; //Kod tate
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofit() {

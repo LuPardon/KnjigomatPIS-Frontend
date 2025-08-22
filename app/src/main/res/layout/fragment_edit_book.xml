@@ -472,13 +472,14 @@
                     android:textColor="#6B7280"
                     android:textAllCaps="false"
                     app:cornerRadius="16dp"
+                    app:backgroundTint="#E5E7EB"
                     app:strokeColor="#6B7280"
                     app:strokeWidth="2dp"
                     app:icon="@drawable/ic_close"
                     app:iconTint="#6B7280"
                     app:iconGravity="textStart"
                     android:elevation="2dp"
-                    app:rippleColor="#E5E7EB" />
+                    app:rippleColor="#DBF2EA" />
 
                 <!-- Save Button - Filled style with proper colors -->
                 <com.google.android.material.button.MaterialButton
@@ -510,6 +511,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="@string/dialog_delete_book_title"
+                app:backgroundTint="#FECACA"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="#DC2626"
@@ -522,7 +524,7 @@
                 app:iconGravity="textStart"
                 android:elevation="1dp"
                 android:layout_marginTop="4dp"
-                app:rippleColor="#FECACA" />
+                app:rippleColor="@color/red" />
 
         </LinearLayout>
 

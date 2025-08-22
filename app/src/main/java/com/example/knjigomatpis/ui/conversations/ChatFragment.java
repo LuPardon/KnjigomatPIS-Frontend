@@ -1,5 +1,7 @@
 package com.example.knjigomatpis.ui.conversations;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -40,150 +43,257 @@ public class ChatFragment extends Fragment {
     private EditText ETMessageToSend;
     private RecyclerView RVMessages;
     private TextView TVChatTitle;
+    private ProgressBar progressBarChatLoading;
+    private TextView TVChatError;
     private Socket mSocket;
     private UserProfile userProfile;
-    private MessageAdapter messageAdapter; // Referenca na adapter
+    private MessageAdapter messageAdapter; // Adapter reference
 
 
-    // Podaci o chat-u
+    // Chat data
     private Long bookId;
     private String ownerId;
     private String currentUserId;
     private String bookTitle;
     private Integer chatId;
 
+    // Loading states
+    private boolean isLoadingMessages = false;
+    private boolean isSocketConnected = false;
+    private boolean isSocketInitialized = false; // Dodano kao u ConversationsFragment
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate called");
 
-        // Dohvaćanje argumenata proslijeđenih iz MainActivity ili ConversationsFragment
+        // Get arguments passed from MainActivity or ConversationsFragment
         if (getArguments() != null) {
             bookId = getArguments().getLong("book_id", -1);
             ownerId = getArguments().getString("owner_id");
             currentUserId = getArguments().getString("current_user_id");
             bookTitle = getArguments().getString("book_title", getString(R.string.chat_default_title));
 
-            Auth0Helper.getUserByIdAsync(ownerId, getContext()).thenAccept(user -> {
-                TVChatTitle.setText(getString(R.string.chat_with) + " " + user.getName() + " (" + user.getUserMetadata().getLocation() + ") ");
-            });
-
-            //  Provjera je li proslijeđen postojeći chat_id
+            // Check if existing chat_id is passed
             int existingChatId = getArguments().getInt("chat_id", -1);
             if (existingChatId != -1) {
                 chatId = existingChatId;
                 Log.d("ChatFragment", "Using existing chat_id: " + chatId);
             }
         }
-
-        try {
-            mSocket = IO.socket(getString(R.string.base_chat_url));
-        } catch (URISyntaxException e) {
-            Log.d("ChatFragment", "URISyntaxException: " + e.getMessage());
-        }
-
-        userProfile = ((MainActivity) getActivity()).cachedUserProfile;
-
-        // Postavljanje socket listener-a
-        mSocket.on("chat message", onNewMessage);
-        mSocket.on("chat history", onChatHistory);
-        mSocket.on(Socket.EVENT_CONNECT, onSocketConnect);
-
-        mSocket.connect();
     }
 
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-
-        if (getArguments() != null) {
-            bookId = getArguments().getLong("book_id", -1);
-            ownerId = getArguments().getString("owner_id");
-            currentUserId = getArguments().getString("current_user_id");
-            bookTitle = getArguments().getString("book_title", getString(R.string.chat_default_title));
-
-            int existingChatId = getArguments().getInt("chat_id", -1);
-            if (existingChatId != -1) {
-                chatId = existingChatId;
-                Log.d("ChatFragment", "Using existing chat_id: " + chatId);
-            }
-        }
-
-        try {
-            mSocket = IO.socket(getString(R.string.base_chat_url));
-        } catch (URISyntaxException e) {
-            Log.d("ChatFragment", "URISyntaxException: " + e.getMessage());
-        }
-
-        userProfile = ((MainActivity) getActivity()).cachedUserProfile;
-
-        mSocket.on("chat message", onNewMessage);
-        mSocket.on("chat history", onChatHistory);
-        mSocket.on(Socket.EVENT_CONNECT, onSocketConnect);
-
-        mSocket.connect();
-
-        if (mSocket.connected()) {
-            initializeExistingChat();
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView called");
+
         View rootView = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        // Ažurirani ID-jevi
+        // Initialize views
         ETMessageToSend = rootView.findViewById(R.id.et_message_input);
         RVMessages = rootView.findViewById(R.id.rv_messages);
         TVChatTitle = rootView.findViewById(R.id.tv_chat_title);
+        progressBarChatLoading = rootView.findViewById(R.id.progressBarChatLoading);
+        TVChatError = rootView.findViewById(R.id.tvChatError);
         Button btnSendMessage = rootView.findViewById(R.id.btn_send_message);
 
-
-        // Postavljanje adaptera za RecyclerView
+        // Setup adapter for RecyclerView
         messageAdapter = new MessageAdapter(getContext(), currentUserId);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setStackFromEnd(true); // Nove poruke na dnu
         RVMessages.setLayoutManager(layoutManager);
         RVMessages.setAdapter(messageAdapter);
 
-        // Naslov chat-a s imenom korisnika
+        // Set chat title with user name
         if (TVChatTitle != null) {
             Auth0Helper.getUserByIdAsync(ownerId, getContext()).thenAccept(user -> {
-                TVChatTitle.setText(getString(R.string.chat_with) + " " + user.getName() + " (" + user.getUserMetadata().getLocation() + ") ");
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        TVChatTitle.setText(getString(R.string.chat_with) + " " + user.getName() + " (" + user.getUserMetadata().getLocation() + ") ");
+                    });
+                }
             });
         }
 
         btnSendMessage.setOnClickListener(v -> attemptSend());
-
-        // Provjera socket konekcije prije pristupanja room-u
-        if (mSocket.connected()) {
-            initializeExistingChat();
-        }
         return rootView;
     }
 
-    // Inicijalizacija postojećeg chat-a
-    private void initializeExistingChat() {
-        if (chatId != null) {
-            Log.d("ChatFragment", "Initializing existing chat: " + chatId);
-            joinChatRoom();
-        } else {
-            Log.d("ChatFragment", "No existing chat_id, new chat will be created on first message");
+    @Override
+    public void onViewCreated( View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated called");
+
+        // IZMJENA: Inicijalizuj socket samo jednom - isti pattern kao ConversationsFragment
+        if (!isSocketInitialized) {
+            initializeSocket();
+        }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume called");
+
+        // Učitaj poruke samo ako je socket spreman
+        if (mSocket != null && mSocket.connected() && userProfile != null) {
+            initializeExistingChat();
+        } else if (mSocket != null && !mSocket.connected()) {
+            Log.d(TAG, "Socket not connected, connecting...");
+            mSocket.connect();
         }
     }
 
-    // Kada se socket uspješno poveže
+    private void initializeSocket() {
+        if (isSocketInitialized && mSocket != null) {
+            Log.d(TAG, "Socket already initialized, skipping");
+            return;
+        }
+
+        try {
+            // Zatvori postojeći socket ako postoji
+            if (mSocket != null) {
+                cleanupSocket();
+            }
+
+            // KLJUČNO: Ista konfiguracija kao u ConversationsFragment
+            IO.Options opts = new IO.Options();
+            opts.transports = new String[]{"websocket"};  // samo websocket
+            mSocket = IO.socket(getString(R.string.base_chat_url), opts);
+
+            Log.d(TAG, "Socket initialized successfully");
+            isSocketInitialized = true;
+        } catch (URISyntaxException e) {
+            Log.e(TAG, "Socket initialization error", e);
+            showError("Socket initialization failed");
+            return;
+        }
+
+        // Check if MainActivity is available and has cached profile
+        if (getActivity() instanceof MainActivity) {
+            userProfile = ((MainActivity) getActivity()).cachedUserProfile;
+            if (userProfile != null) {
+                Log.d(TAG, "User profile loaded: " + userProfile.getId());
+            } else {
+                Log.w(TAG, "User profile is null");
+                showError("User profile not available");
+                return;
+            }
+        } else {
+            Log.e(TAG, "Activity is not MainActivity");
+            showError("Activity error");
+            return;
+        }
+
+        // Setup socket listeners
+        mSocket.on("chat message", onNewMessage);
+        mSocket.on("chat history", onChatHistory);
+        mSocket.on(Socket.EVENT_CONNECT, onSocketConnect);
+        mSocket.on(Socket.EVENT_DISCONNECT, onSocketDisconnect);
+        mSocket.on(Socket.EVENT_CONNECT_ERROR, onSocketError);
+
+        // Connect socket
+        mSocket.connect();
+    }
+    private void showLoading(boolean show) {
+        if (getActivity() == null) return;
+
+        getActivity().runOnUiThread(() -> {
+            isLoadingMessages = show;
+            if (progressBarChatLoading != null) {
+                progressBarChatLoading.setVisibility(show ? View.VISIBLE : View.GONE);
+            }
+            if (RVMessages != null) {
+                RVMessages.setVisibility(show ? View.GONE : View.VISIBLE);
+            }
+            if (TVChatError != null) {
+                TVChatError.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void showError(String errorMessage) {
+        if (getActivity() == null) return;
+
+        Log.e("ChatFragment", "Showing error: " + errorMessage);
+        getActivity().runOnUiThread(() -> {
+            showLoading(true);
+        });
+    }
+    private void showMessages() {
+        if (getActivity() == null) return;
+
+        getActivity().runOnUiThread(() -> {
+            showLoading(false);
+            if (RVMessages != null) {
+                RVMessages.setVisibility(View.VISIBLE);
+            }
+            if (TVChatError != null) {
+                TVChatError.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    // Initialize existing chat
+    private void initializeExistingChat() {
+        if (chatId != null) {
+            Log.d("ChatFragment", "Initializing existing chat: " + chatId);
+            showLoading(true);
+            joinChatRoom();
+        } else {
+            Log.d("ChatFragment", "No existing chat_id, new chat will be created on first message");
+            showMessages(); // Show empty chat ready for new messages
+
+        }
+    }
+
+    // When socket successfully connects
     private Emitter.Listener onSocketConnect = args -> {
         if (getActivity() == null) return;
 
         getActivity().runOnUiThread(() -> {
             Log.d("ChatFragment", "Socket connected, initializing chat");
-            initializeExistingChat();
+            isSocketConnected = true;
+            // IZMJENA: Inicijaliziraj chat samo ako nisu već inicijalizirane poruke
+            if (!isLoadingMessages) {
+                initializeExistingChat();
+            }        });
+    };
+
+    // When socket disconnects
+    private Emitter.Listener onSocketDisconnect = args -> {
+        if (getActivity() == null) return;
+
+        getActivity().runOnUiThread(() -> {
+            Log.d("ChatFragment", "Socket disconnected");
+            isSocketConnected = false;
+            if (isLoadingMessages) {
+                showError("Connection lost");
+            }
         });
     };
 
+    // When socket connection fails
+    private Emitter.Listener onSocketError = args -> {
+        if (getActivity() == null) return;
+
+        String errorMsg = args.length > 0 ? args[0].toString() : "Unknown error";
+        getActivity().runOnUiThread(() -> {
+            Log.e("ChatFragment", "Socket error: " + errorMsg);
+            isSocketConnected = false;
+            showError("Connection failed");
+        });
+    };
 
     private void attemptSend() {
+        if (!isSocketConnected || mSocket == null || !mSocket.connected()) {
+            Log.w(TAG, "Cannot send message - socket not connected");
+            showError("Not connected. Please wait...");
+            return;
+        }
+
         String content = ETMessageToSend.getText().toString().trim();
         if (TextUtils.isEmpty(content)) {
             return;
@@ -197,11 +307,11 @@ public class ChatFragment extends Fragment {
             obj.put("content", content);
 
             if (chatId != null) {
-                // Chat već postoji
+                // Chat already exists
                 obj.put("chat_id", chatId);
                 Log.d("ChatFragment", "Sending message to existing chat: " + chatId);
             } else {
-                // Prvi put se šalje poruka - chat će se kreirati
+                // First message - chat will be created
                 obj.put("recipient_id", ownerId);
                 Log.d("ChatFragment", "Sending first message, chat will be created");
             }
@@ -209,6 +319,8 @@ public class ChatFragment extends Fragment {
             mSocket.emit("chat message", obj);
         } catch (JSONException e) {
             Log.e("ChatFragment", "Error creating message JSON", e);
+            showError("Failed to send message");
+
         }
     }
 
@@ -216,16 +328,19 @@ public class ChatFragment extends Fragment {
         if (chatId != null && mSocket != null && mSocket.connected()) {
             Log.d("ChatFragment", "Joining chat room: chat_" + chatId);
 
-            // Server očekuje samo chatId kao parametar
+            // Server expects only chatId as parameter
             mSocket.emit("join chat", chatId);
 
-            // Odmah nakon join poziva, učitaj poruke s kratkom pauzom
+            // Load messages with short delay after join call
             new android.os.Handler().postDelayed(() -> {
                 loadChatMessages();
-            }, 200); // Kratka pauza da server obradi join
+            }, 500); // Short pause for server to process join
         } else {
             Log.w("ChatFragment", "Cannot join room - chatId: " + chatId +
                     ", socket connected: " + (mSocket != null && mSocket.connected()));
+            if (!isSocketConnected) {
+                showError("Not connected to server");
+            }
         }
     }
 
@@ -239,6 +354,11 @@ public class ChatFragment extends Fragment {
         } else {
             Log.d("ChatFragment", "Cannot load messages - chatId: " + chatId +
                     ", socket connected: " + (mSocket != null && mSocket.connected()));
+            if (!isSocketConnected) {
+                showError("Cannot load messages - not connected");
+            } else {
+                showMessages(); // Show empty chat
+            }
         }
     }
 
@@ -274,12 +394,10 @@ public class ChatFragment extends Fragment {
                     );
 
                     Message message = new Message(sender_id, borrowrequest, message_id, message_chat_id, content, sent_at);
-
                     message.setSender_name(sender_name);
                     addMessage(message);
                 } else if (!imagePath.isEmpty()) {
                     Message message = new Message(sender_id, content, sent_at, message_chat_id, message_id, imagePath);
-
                     message.setSender_name(sender_name);
                     addMessage(message);
                 } else {
@@ -287,6 +405,16 @@ public class ChatFragment extends Fragment {
                     message.setSender_name(sender_name);
                     addMessage(message);
                 }
+// Postavi chat_id ako je nova poruka kreirala chat
+                if (chatId == null && message_chat_id > 0) {
+                    chatId = message_chat_id;
+                    Log.d(TAG, "Chat ID set to: " + chatId);
+                    joinChatRoom(); // Pridruži se room-u novog chat-a
+                }
+
+                // Make sure messages are visible when receiving new ones
+                showMessages();
+
             } catch (JSONException e) {
                 Log.e("ChatFragment", "Error parsing message", e);
             }
@@ -302,10 +430,10 @@ public class ChatFragment extends Fragment {
 
                 Log.d("ChatFragment", "Received chat history with " + messages.length() + " messages");
 
-                // Očisti postojeće poruke
+                // Clear existing messages
                 messageAdapter.clearMessages();
 
-                // Dodaj sve poruke iz povijesti
+                // Add all messages from history
                 for (int i = 0; i < messages.length(); i++) {
                     JSONObject obj = messages.getJSONObject(i);
 
@@ -334,12 +462,10 @@ public class ChatFragment extends Fragment {
                         );
 
                         Message message = new Message(sender_id, borrowrequest, message_id, message_chat_id, content, sent_at);
-
                         message.setSender_name(sender_name);
                         addMessage(message);
                     } else if (!imagePath.isEmpty()) {
                         Message message = new Message(sender_id, content, sent_at, message_chat_id, message_id, imagePath);
-
                         message.setSender_name(sender_name);
                         addMessage(message);
                     } else {
@@ -351,6 +477,9 @@ public class ChatFragment extends Fragment {
 
                 Log.d("ChatFragment", "Chat history loaded and displayed: " + messages.length() + " messages");
 
+                // Show messages when history is loaded
+                showMessages();
+
             } catch (JSONException e) {
                 Log.e("ChatFragment", "Error parsing chat history", e);
             }
@@ -358,19 +487,37 @@ public class ChatFragment extends Fragment {
     };
 
     private void addMessage(Message message) {
+        if (messageAdapter != null) {
+            messageAdapter.addMessage(message);
 
-        messageAdapter.addMessage(message);
+            // Scroll to last message
+            if (RVMessages != null) {
+                RVMessages.scrollToPosition(messageAdapter.getItemCount() - 1);
+            }
 
-        // Scroll na zadnju poruku
-        RVMessages.scrollToPosition(messageAdapter.getItemCount() - 1);
+            // Use real name instead of "You"/"Owner"
+            String senderLabel = message.getSender_id().equals(currentUserId) ? getString(R.string.you) :
+                    (message.getSender_name() != null ? message.getSender_name() : getString(R.string.other_user));
 
-        // Koristi stvarno ime umjesto "You"/"Owner"
-        String senderLabel = message.getSender_id().equals(currentUserId) ? getString(R.string.you) :
-                (message.getSender_name() != null ? message.getSender_name() : getString(R.string.other_user));
-
-        Log.d("ChatFragment", "Message added to UI: " + senderLabel + ": " + message.getContent());
+            Log.d("ChatFragment", "Message added to UI: " + senderLabel + ": " + message.getContent());
+        }
     }
 
+    // NOVO: Funkcija za čišćenje socket-a - ista kao u ConversationsFragment
+    private void cleanupSocket() {
+        if (mSocket != null) {
+            Log.d(TAG, "Cleaning up socket");
+            mSocket.disconnect();
+            mSocket.off("chat message", onNewMessage);
+            mSocket.off("chat history", onChatHistory);
+            mSocket.off(Socket.EVENT_CONNECT, onSocketConnect);
+            mSocket.off(Socket.EVENT_DISCONNECT, onSocketDisconnect);
+            mSocket.off(Socket.EVENT_CONNECT_ERROR, onSocketError);
+            mSocket = null;
+        }
+        isSocketInitialized = false;
+        isSocketConnected = false;
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -384,7 +531,8 @@ public class ChatFragment extends Fragment {
             mSocket.off("chat message", onNewMessage);
             mSocket.off("chat history", onChatHistory);
             mSocket.off(Socket.EVENT_CONNECT, onSocketConnect);
-
+            mSocket.off(Socket.EVENT_DISCONNECT, onSocketDisconnect);
+            mSocket.off(Socket.EVENT_CONNECT_ERROR, onSocketError);
         }
     }
 }

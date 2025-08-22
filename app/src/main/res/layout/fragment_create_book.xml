@@ -585,6 +585,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#6B7280"
+                app:backgroundTint="#E5E7EB"
                 android:textAllCaps="false"
                 app:cornerRadius="16dp"
                 app:strokeColor="#6B7280"
@@ -593,7 +594,7 @@
                 app:iconTint="#6B7280"
                 app:iconGravity="textStart"
                 android:elevation="2dp"
-                app:rippleColor="#E5E7EB" />
+                app:rippleColor="#DBF2EA" />
 
             <!-- Add Book Button -->
             <com.google.android.material.button.MaterialButton
