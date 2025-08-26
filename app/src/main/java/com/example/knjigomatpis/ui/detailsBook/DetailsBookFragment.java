@@ -49,7 +49,7 @@ public class DetailsBookFragment extends Fragment {
             mViewModel.fetchBookById(bookId);
         } else {
             Log.e("DetailsDebug", getString(R.string.debug_invalid_book_id));
-            return view; // Vrati prazan view ako nema bookId
+            return view; // Vraća prazan view ako nema bookId
         }
 
         // Promatranje promjena podataka knjige
@@ -99,7 +99,7 @@ public class DetailsBookFragment extends Fragment {
                     }
                 });
 
-                // Poziva MainActivity da postavi FAB
+                // Pozivanje MainActivity da postavi FAB
                 if (getActivity() instanceof MainActivity) {
                     ((MainActivity) getActivity()).setupDetailsBookFab(book);
                 }

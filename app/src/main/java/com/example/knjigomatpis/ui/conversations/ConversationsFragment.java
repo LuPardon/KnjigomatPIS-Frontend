@@ -45,7 +45,7 @@ public class ConversationsFragment extends Fragment {
     private UserProfile userProfile;
     private View rootView;
 
-    // Loading state components
+    // Loading state komponente
     private ProgressBar progressBarLoading;
     private TextView tvNoConversations;
     private boolean isLoadingChats = false;
@@ -59,14 +59,14 @@ public class ConversationsFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_conversations, container, false);
 
-        // Initialize views
+        // Inicijaliziranje views
         recyclerViewChats = rootView.findViewById(R.id.recyclerViewChats);
         progressBarLoading = rootView.findViewById(R.id.progressBarLoading);
         tvNoConversations = rootView.findViewById(R.id.tvNoConversations);
 
         recyclerViewChats.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Initialize adapter with callback function for chat click
+        // Inicijaliziranje adaptera sa callback funkcijama za chat click
         adapter = new ConversationsAdapter(chatList, this::openChat);
         recyclerViewChats.setAdapter(adapter);
 
@@ -116,7 +116,7 @@ public class ConversationsFragment extends Fragment {
             return;
         }
 
-        // Check if MainActivity is available and has cached profile
+        // Provjera da li je MainActivity available i da li je user profile
         if (getActivity() instanceof MainActivity) {
             userProfile = ((MainActivity) getActivity()).cachedUserProfile;
             if (userProfile != null) {
@@ -132,13 +132,13 @@ public class ConversationsFragment extends Fragment {
             return;
         }
 
-        // Setup socket listeners
+        // Postavljanje socket listeners-a
         mSocket.on(Socket.EVENT_CONNECT, onConnect);
         mSocket.on(Socket.EVENT_DISCONNECT, onDisconnect);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("user chats", onUserChats);
 
-        // Connect socket
+        // Povezivanje socket
         mSocket.connect();
     }
 
@@ -288,7 +288,7 @@ public class ConversationsFragment extends Fragment {
                     String otherPersonId = chatObj.getString("other_person_id");
                     chat.setPerson2_id(otherPersonId);
 
-                    // Set name from server response or fallback
+                    // Postavljanje imena sa server response ili fallback
                     chat.setPerson2Name(chatObj.optString("other_user_name", getString(R.string.default_user_name) + otherPersonId));
                     chat.setLastMessage(chatObj.optString("last_message", ""));
                     chat.setLastMessageTime(chatObj.optString("last_message_time", ""));
@@ -297,11 +297,11 @@ public class ConversationsFragment extends Fragment {
                     Log.d(TAG, "Added chat: " + chat.getChat_id() + " with " + chat.getPerson2Name());
                 }
 
-                // Update adapter
+                // Ažuriranje adaptera
                 adapter.notifyDataSetChanged();
                 Log.d(TAG, "Adapter updated with " + chatList.size() + " chats");
 
-                // Show the appropriate view
+                // Prikazivanje odgovarajućeg view-a
                 showChats();
 
             } catch (JSONException e) {
@@ -311,21 +311,21 @@ public class ConversationsFragment extends Fragment {
         });
     };
 
-    // Function to open chat
+    // Funkcija za otvaranje chat-a
     private void openChat(Chat chat) {
         Log.d(TAG, "Opening chat: " + chat.getChat_id() + " with " + chat.getPerson2Name());
 
         if (getActivity() instanceof MainActivity) {
             MainActivity mainActivity = (MainActivity) getActivity();
 
-            // Create Bundle with chat data
+            // Kreiranje Bundle sa chat data
             Bundle args = new Bundle();
             args.putInt("chat_id", chat.getChat_id());
 
             String currentUserId = userProfile.getId();
             String otherUserId = chat.getPerson2_id();
 
-            // All required parameters for ChatFragment
+            // Svi potrebni parametri za ChatFragment
             args.putString("owner_id", otherUserId);
             args.putString("current_user_id", currentUserId);
             args.putString("other_user_name", chat.getPerson2Name());

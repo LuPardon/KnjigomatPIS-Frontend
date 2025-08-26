@@ -84,7 +84,7 @@ public class HistoryExchangeFragment extends Fragment implements HistoryFiltersD
             Log.e(TAG, "UserProfile is null, cannot setup adapter properly");
         }
 
-        // Observiranje promjena u podacima
+        // Promatranje promjena u podacima
         viewModel.getHistory().observe(getViewLifecycleOwner(), items -> {
             if (items != null && !items.isEmpty()) {
                 Log.d(TAG, "Received " + items.size() + " history items");
@@ -96,14 +96,14 @@ public class HistoryExchangeFragment extends Fragment implements HistoryFiltersD
                     adapter.updateData(items);
                 }
 
-                // Prikaži recycler view, sakrij empty poruku
+                // Prikazivanje recycler view, sakrivanje empty poruke
                 binding.historyItemsRecyclerView.setVisibility(View.VISIBLE);
                 binding.noHistoryContainer.setVisibility(View.GONE);
 
             } else {
                 Log.w(TAG, "Received null or empty history items");
 
-                // Sakrij recycler view, prikaži empty poruku
+                // Sakrivanje recycler view, prikazivanje empty poruke
                 binding.historyItemsRecyclerView.setVisibility(View.GONE);
                 binding.noHistoryContainer.setVisibility(View.VISIBLE);
             }
@@ -152,7 +152,7 @@ public class HistoryExchangeFragment extends Fragment implements HistoryFiltersD
         Log.d(TAG, "Filters reset");
         viewModel.resetFilters();
 
-        // Također resetiraj search query
+        // Resetiranje search query-ja
         if (searchView != null) {
             searchView.setQuery("", false);
             searchView.clearFocus();
@@ -178,24 +178,10 @@ public class HistoryExchangeFragment extends Fragment implements HistoryFiltersD
 
     private void onHistoryItemClick(UserExchangeHistoryResponse historyItem) {
         Log.d(TAG, "History item clicked: " + historyItem.getBook().getTitle());
-
-        // Implementirati navigaciju na detalje razmjene
-        // Na primjer:
-        // Navigation.findNavController(requireView()).navigate(
-        //     HistoryExchangeFragmentDirections.actionHistoryToExchangeDetails(historyItem.getExchange_id())
-        // );
-
-        // Ili otvaranje dijaloga s detaljima
-        // showExchangeDetailsDialog(historyItem);
-
-        // Ili navigacija na chat
-        // if (getActivity() instanceof MainActivity) {
-        //     ((MainActivity) getActivity()).navigateToChatFromExchange(historyItem);
-        // }
     }
 
     public void openFilterDialog() {
-        showFilterDialog(); // Poziva postojeću privatnu metodu
+        showFilterDialog(); // Pozivanje postojeće privatne metode
     }
     private void setupSearchView() {
         if (searchView != null) {

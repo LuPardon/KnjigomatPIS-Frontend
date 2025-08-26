@@ -88,11 +88,11 @@ public class BookFiltersDialogHelper {
                 List<String> newSelectedYearRanges = new ArrayList<>();
                 List<String> newSelectedPageRanges = new ArrayList<>();
 
-                // Collect range filters
+                // Pokupi range filtere
                 collectRangeFilters(yearRangeContainer, newSelectedYearRanges);
                 collectRangeFilters(pageRangeContainer, newSelectedPageRanges);
 
-                // Collect other filters
+                // Pokupi ostale filtere
                 LinearLayout[] allFilterContainers = {
                         genreLayout, languageLayout, publisherLayout, conditionLayout
                 };
@@ -136,7 +136,7 @@ public class BookFiltersDialogHelper {
         if (bottomSheet != null) {
             BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);
 
-            // Maximum height (60% of screen)
+            // Maksimalna visina (60% ekrana)
             int maxHeight = (int) (context.getResources().getDisplayMetrics().heightPixels * 0.6);
             bottomSheet.getLayoutParams().height = maxHeight;
             bottomSheet.requestLayout();

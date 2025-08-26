@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                     });
                 })
                 .exceptionally(throwable -> {
-                    // Handle error (showSnackBar already called in onFailure)
                     return null;
                 });
 
@@ -253,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
             if (book.getUserId().equals(currentUserId)) {
                 setupEditFab();
             } else {
-                // Provjeri status knjige prije postavljanja chat FAB-a
+                // Provjera statusa knjige prije postavljanja chat FAB-a
                 if (isBookUnavailable(book)) {
                     setupUnavailableBookFab();
                 } else {
@@ -443,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentBook != null && cachedUserProfile != null) {
             long bookId = currentBook.getBookId();
 
-            // Dodaj u pending zahtjeve
+            // Dodavanje u pending zahtjeve
             pendingRequests.add(bookId);
 
             // Zapis vremena zahtjeva
@@ -517,7 +516,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        // Učitaj timestamps - iteriranje kroz sve keys
+        // Učitavanje timestamps - iteriranje kroz sve keys
         Map<String, ?> allPrefs = prefs.getAll();
         for (String key : allPrefs.keySet()) {
             if (key.startsWith("timestamp_")) {
@@ -633,7 +632,7 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setImageResource(android.R.drawable.ic_menu_sort_by_size);
         binding.appBarMain.fab.setOnClickListener(view -> {
 
-            // Poziva metodu iz fragmenta za otvaranje filtera
+            // Pozivanje metode iz fragmenta za otvaranje filtera
             Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
             if (navHostFragment != null) {
                 Fragment currentFragment = navHostFragment.getChildFragmentManager().getFragments().get(0);
@@ -827,7 +826,7 @@ public class MainActivity extends AppCompatActivity {
         ).show();
     }
 
-    // Styling za dialoge
+    // Stilovi za dialoge
     private void styleDialog(AlertDialog dialog) {
         // Osnovni stil za neutralne dialoge
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);

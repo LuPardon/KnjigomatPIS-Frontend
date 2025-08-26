@@ -33,10 +33,10 @@ public class Auth0User {
     @SerializedName("app_metadata")
     private Object appMetadata;
 
-    // Constructors
+    // Konstruktori
     public Auth0User() {}
 
-    // Getters and Setters
+    // Geteri i Seteri
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
 

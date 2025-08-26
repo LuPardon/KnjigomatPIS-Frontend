@@ -89,7 +89,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 holder.status.setBackgroundResource(R.drawable.status_unavailable);
                 holder.status.setText(getStatusText(book.getBookStatusId()));
 
-                // Postaviti bijeli tekst za tamnu pozadinu
+                // Postavlja bijeli tekst za tamnu pozadinu
                 holder.status.setTextColor(ContextCompat.getColor(context, R.color.black_overlay));
             }
             holder.visibility.setVisibility(View.GONE); // Sakrij vidljivost
@@ -206,7 +206,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void updateBooks(List<Book> books) {
         this.originalBookList = new ArrayList<>(books);
 
-        // Filtrira privatne knjige koje korisnik ne posjeduje
+        // Filtriranje privatne knjige koje korisnik ne posjeduje
         List<Book> visibleBooks = new ArrayList<>();
         for (Book book : books) {
             boolean isPrivate = book.getVisibilityId() != null && book.getVisibilityId() == 1L;
@@ -221,7 +221,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             }
         }
 
-        // Postavi filtrirane knjige, ne sve knjige!
+        // Postavljanje filtrirane knjige, ne sve knjige!
         this.bookList = visibleBooks;
         notifyDataSetChanged();
     }
@@ -347,7 +347,7 @@ public void filterBooks(String query, List<String> filters, List<String> selecte
     notifyDataSetChanged();
 }
     public void resetBooks() {
-        // Ne može samo kopirati originalBookList, nego mora filtrirati
+        // Filtriranje originalBookList
         List<Book> visibleBooks = new ArrayList<>();
         for (Book book : originalBookList) {
             boolean isPrivate = book.getVisibilityId() != null && book.getVisibilityId() == 1L;

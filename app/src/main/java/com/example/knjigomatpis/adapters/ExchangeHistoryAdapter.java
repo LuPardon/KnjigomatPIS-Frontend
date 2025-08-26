@@ -216,7 +216,7 @@ public class ExchangeHistoryAdapter extends RecyclerView.Adapter<ExchangeHistory
     }
 
     private String extractFromMetadata(String key) {
-        // Pokušaj user metadata prvo
+        // Pokušaj user metadata
         Map<String, Object> userMetadata = currentUserProfile.getUserMetadata();
         if (userMetadata != null) {
             Object value = userMetadata.get(key);
@@ -324,7 +324,7 @@ public class ExchangeHistoryAdapter extends RecyclerView.Adapter<ExchangeHistory
             UserExchangeHistoryResponse oldItem = oldList.get(oldItemPosition);
             UserExchangeHistoryResponse newItem = newList.get(newItemPosition);
 
-            // Usporedi relevantna polja za update
+            // Usporedba relevantnih polja za update
             return oldItem.getStatus_ex_id() == newItem.getStatus_ex_id() &&
                     java.util.Objects.equals(oldItem.getStart_date(), newItem.getStart_date()) &&
                     java.util.Objects.equals(oldItem.getEnd_date(), newItem.getEnd_date());
@@ -337,7 +337,7 @@ public class ExchangeHistoryAdapter extends RecyclerView.Adapter<ExchangeHistory
         }
 
         try {
-            // Pokušaj parsiranja ISO formata prvo
+            // Pokušaj parsiranja ISO formata ako je dostupno
             ZonedDateTime dateTime = ZonedDateTime.parse(dateString);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm");
             return dateTime.format(formatter);

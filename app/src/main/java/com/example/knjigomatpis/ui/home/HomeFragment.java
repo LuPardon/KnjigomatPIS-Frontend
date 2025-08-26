@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
                             selectedPageRanges.clear();
                             selectedPageRanges.addAll(newSelectedPageRanges);
 
-                            // Apply filters
+                            // Primjena filtera
                             adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
                             updateActiveFiltersDisplay();
                         }
@@ -126,7 +126,7 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 currentQuery = newText;
-                // Za search pozovi s praznim range listama
+                // Za search pozivanje s praznim range listama
                 adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
                 return true;
             }
@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment {
         binding.searchView.setIconifiedByDefault(true);
         binding.searchView.setIconified(true);
 
-        //// Pronađi EditText unutar SearchView-a
+        // Pronađi EditText unutar SearchView-a
         View searchEditText = binding.searchView.findViewById(androidx.appcompat.R.id.search_src_text);
         if (searchEditText instanceof EditText) {
             ((EditText) searchEditText).setHint(getString(R.string.search_hint));
@@ -172,7 +172,7 @@ public class HomeFragment extends Fragment {
     }
     private void observeViewModel() {
         homeViewModel.getBooks().observe(getViewLifecycleOwner(), books -> {
-            // PROVJERI DA LI JE USER ID POSTAVLJEN PRIJE POZIVA
+            // PROVJERA DA LI JE USER ID POSTAVLJEN PRIJE POZIVA
             if (currentUserId != null) {
                 adapter.setUserId(currentUserId);
             } else {
@@ -197,14 +197,14 @@ public class HomeFragment extends Fragment {
         });
     }
     private void reapplyCurrentFilters() {
-        // Provjeri ima li aktivnih filtera
+        // Provjera ima li aktivnih filtera
         boolean hasActiveFilters = !activeFilters.isEmpty() ||
                 !selectedYearRanges.isEmpty() ||
                 !selectedPageRanges.isEmpty() ||
                 !currentQuery.isEmpty();
 
         if (hasActiveFilters) {
-            // Primijeni postojeće filtere
+            // Primjena postojećih filtera
             adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
             updateActiveFiltersDisplay();
         }
@@ -251,7 +251,7 @@ public class HomeFragment extends Fragment {
                 binding.searchView.onActionViewCollapsed();
                 binding.searchView.clearFocus();
 
-                // Sakrij tipkovnicu
+                // Sakrivanje tipkovnice
                 InputMethodManager imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null && getActivity() != null && getActivity().getCurrentFocus() != null) {
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
@@ -260,7 +260,7 @@ public class HomeFragment extends Fragment {
                 // Ima tekst - samo sakrij tipkovnicu i ukloni fokus
                 binding.searchView.clearFocus();
 
-                // Sakrij tipkovnicu
+                // Sakrivanje tipkovnice
                 InputMethodManager imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null && getActivity() != null && getActivity().getCurrentFocus() != null) {
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);

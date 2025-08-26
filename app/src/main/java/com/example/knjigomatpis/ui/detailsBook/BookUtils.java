@@ -57,7 +57,7 @@ public class BookUtils {
     public static Long getConditionIdFromText(Context context, String text) {
         if (text == null) return 1L; // default
 
-        // Prvo provjerimo lokalizirane stringove
+        // Provjera za lokalizirane stringove
         if (text.equals(context.getString(R.string.condition_new))) return 1L;
         if (text.equals(context.getString(R.string.condition_good))) return 2L;
         if (text.equals(context.getString(R.string.condition_used))) return 3L;
@@ -127,7 +127,7 @@ public class BookUtils {
         }
     }
 
-    // Helper metode za dobivanje svih opcija (korisno za spinner-e)
+    // Helper metode za dobivanje svih opcija (potrebne za spinner-e)
     public static String[] getConditionOptions(Context context) {
         return new String[] {
                 context.getString(R.string.condition_new),

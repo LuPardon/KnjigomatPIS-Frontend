@@ -63,7 +63,7 @@ public class EditProfileFragment extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         ivProfilePicture = view.findViewById(R.id.ivProfilePicture);
 
-        // Popunjavanje ako dobijemo podatke kao argumente
+        // Popunjavanje ako dobije podatke kao argumente
         Bundle args = getArguments();
         if (args != null) {}
 

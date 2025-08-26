@@ -291,12 +291,12 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
             String uriString = imageUri.toString();
 
             if (pendingImagePosition == -1) {
-                // Dodaj novu sliku
+                // Dodavanje nove slike
                 tempImagePaths.add(uriString);
                 imageAdapter.addImage(uriString);
                 addImageToBookImages(null, 0);
             } else {
-                // Zamijeni postojeću sliku
+                // Zamjena postojeće slike
                 tempImagePaths.set(pendingImagePosition, uriString);
                 imageAdapter.replaceImage(pendingImagePosition, uriString);
             }
@@ -346,7 +346,7 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
         List<String> errors = new ArrayList<>();
         boolean isValid = true;
 
-        // Resetiraj sve postojeće greške
+        // Resetiranje svih postojećih grešaka
         clearFieldErrors();
 
         // 1. NASLOV - obavezan
@@ -525,7 +525,7 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
                 .setCancelable(false)
                 .create();
 
-        // Stiliziraj kao error dialog
+        // Stiliziranje kao error dialog
         dialog.setOnShowListener(d -> {
             Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
             if (positiveButton != null) {
@@ -559,11 +559,11 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
         }
     }
 
-    // Poboljšana metoda za kreiranje knjige s boljom validacijom
+    // Metoda za kreiranje knjige
     private void showCreateBookConfirmation() {
-        // Prvo provjeri validaciju
+        // Provjera validacije
         if (!validateRequiredFields()) {
-            return; // Ne nastavljaj ako validacija ne prolazi
+            return; // Ne nastavlja ako validacija ne prolazi
         }
 
         // Ako nema slika, upozori korisnika
@@ -572,7 +572,7 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
             return;
         }
 
-        // Prikaži sažetak prije kreiranja
+        // Prikazivanje sažetka prije kreiranja
         showBookSummaryDialog();
     }
 

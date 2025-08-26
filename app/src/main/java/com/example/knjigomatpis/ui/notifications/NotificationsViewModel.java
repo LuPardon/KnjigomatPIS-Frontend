@@ -87,7 +87,7 @@ public class NotificationsViewModel extends ViewModel {
                     } else {
                         Log.d("ViewModel", "Notifikacija označena kao pročitana");
                     }
-                    fetchNotifications(); // Osvježi listu
+                    fetchNotifications(); // Osvježavanje liste
                 }
             }
 

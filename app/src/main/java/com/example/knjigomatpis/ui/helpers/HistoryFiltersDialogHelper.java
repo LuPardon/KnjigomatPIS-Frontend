@@ -43,10 +43,10 @@ public class HistoryFiltersDialogHelper {
         LinearLayout exchangeStatusLayout = dialogView.findViewById(R.id.exchangeStatusCheckboxContainer);
 
         try {
-            // Add ownership filters (Moja/Od nekog drugog)
+            // Dodavanje ownership filtera (Moja/Od nekog drugog)
             addOwnershipCheckBoxes(context, ownershipLayout, currentActiveFilters);
 
-            // Add exchange status filters
+            // Dodavanje exchange status filtera
             addExchangeStatusCheckBoxes(context, exchangeStatusLayout, historyItems, currentActiveFilters);
 
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class HistoryFiltersDialogHelper {
             return;
         }
 
-        // Setup buttons
+        // Postavljanje buttons-a
         Button applyButton = dialogView.findViewById(R.id.applyFiltersBtn);
         Button resetButton = dialogView.findViewById(R.id.resetFiltersBtn);
 
@@ -180,12 +180,12 @@ public class HistoryFiltersDialogHelper {
         if (bottomSheet != null) {
             BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);
 
-            // Maximum height (60% of screen)
+            // Maksimalna visina (60% ekrana)
             int maxHeight = (int) (context.getResources().getDisplayMetrics().heightPixels * 0.6);
             bottomSheet.getLayoutParams().height = maxHeight;
             bottomSheet.requestLayout();
 
-            // Configure behavior
+            // Konfiguracija ponašanja
             behavior.setPeekHeight(maxHeight);
             behavior.setSkipCollapsed(false);
             behavior.setDraggable(false);

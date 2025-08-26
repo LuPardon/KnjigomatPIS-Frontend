@@ -120,7 +120,7 @@ public class MyBooksFragment extends Fragment implements BookFiltersHelper.Filte
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     currentQuery = newText;
-                    // Primijeni pretragu SAMO ako ima knjiga
+                    // Primijena pretrage SAMO ako ima knjiga
                     List<Book> currentBooks = myBooksViewModel.getBooks().getValue();
                     if (currentBooks != null && !currentBooks.isEmpty()) {
                         adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
@@ -183,7 +183,7 @@ public class MyBooksFragment extends Fragment implements BookFiltersHelper.Filte
                 binding.bookRecyclerView2.setVisibility(View.VISIBLE);
                 binding.tvNoMyBooks.setVisibility(View.GONE);
 
-                // Primijeni trenutne filtere nakon što se podaci učitaju
+                // Primijena trenutnih filtera nakon što se podaci učitaju
                 adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
             } else {
                 binding.bookRecyclerView2.setVisibility(View.GONE);
@@ -201,7 +201,7 @@ public class MyBooksFragment extends Fragment implements BookFiltersHelper.Filte
     public void onFiltersApplied(List<String> newActiveFilters,
                                  List<String> newSelectedYearRanges,
                                  List<String> newSelectedPageRanges) {
-        // Update filter lists
+        // Ažuriranje filter liste
         activeFilters.clear();
         activeFilters.addAll(newActiveFilters);
 
@@ -211,7 +211,7 @@ public class MyBooksFragment extends Fragment implements BookFiltersHelper.Filte
         selectedPageRanges.clear();
         selectedPageRanges.addAll(newSelectedPageRanges);
 
-        // Apply filters to adapter SAMO ako ima knjiga
+        // Primjena filtera na adapter SAMO ako ima knjiga
         List<Book> currentBooks = myBooksViewModel.getBooks().getValue();
         if (currentBooks != null && !currentBooks.isEmpty()) {
             adapter.filterBooks(currentQuery, activeFilters, selectedYearRanges, selectedPageRanges);
@@ -221,7 +221,7 @@ public class MyBooksFragment extends Fragment implements BookFiltersHelper.Filte
 
     @Override
     public void onFiltersReset() {
-        // Clear all filters
+        // Očisti sve filtere
         currentQuery = "";
         activeFilters.clear();
         selectedYearRanges.clear();

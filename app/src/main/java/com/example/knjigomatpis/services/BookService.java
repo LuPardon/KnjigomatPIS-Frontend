@@ -260,7 +260,6 @@ public class BookService {
         public String getMessage() { return message; }
         public void setMessage(String message) { this.message = message; }
     }
-    ///
 
     // Callback interface za update knjigu
     public interface UpdateBookCallback {

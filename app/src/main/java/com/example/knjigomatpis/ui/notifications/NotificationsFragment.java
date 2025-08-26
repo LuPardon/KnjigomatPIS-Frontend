@@ -67,7 +67,7 @@ public class NotificationsFragment extends Fragment {
 
     public void markAllAsRead() {
         if (viewModel != null) {
-            viewModel.markAllAsRead(); // Sad koristi currentUserId iz ViewModel-a
+            viewModel.markAllAsRead(); // Koristi currentUserId iz ViewModel-a
         }
     }
     private void onNotificationClick(UserNotification notification) {

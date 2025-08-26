@@ -23,12 +23,12 @@ public class BookFiltersHelper {
         public static Set<String> getAvailableLanguages(List<Book> books) {
             if (books == null) return new HashSet<>();
 
-            // Koristimo TreeSet s case-insensitive usporedbom kako bi grupirali iste jezike
+            // Koristi TreeSet s case-insensitive usporedbom kako bi grupiralo iste jezike
             Set<String> normalizedLanguages = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 
             for (Book book : books) {
                 if (book.getBookLanguage() != null && !book.getBookLanguage().trim().isEmpty()) {
-                    // Normaliziraj jezik - prvi znak velikim, ostali malim slovima
+                    // Normaliziranje jezika - prvi znak velikim, ostali malim slovima
                     String normalizedLanguage = normalizeLanguage(book.getBookLanguage());
                     normalizedLanguages.add(normalizedLanguage);
                 }
@@ -37,7 +37,7 @@ public class BookFiltersHelper {
             return normalizedLanguages;
         }
 
-        // Ostale helper metode za dohvaćanje dostupnih filtrera
+        // Ostale helper metode za dohvaćanje dostupnih filtera
         public static Set<Long> getAvailableGenres(List<Book> books) {
             Set<Long> genres = new HashSet<>();
             if (books == null) return genres;
@@ -119,7 +119,7 @@ public class BookFiltersHelper {
                 checkBox.setText(displayText);
                 checkBox.setTag(tagString);
 
-                // Provjeri i označi checkbox ako je u activeFilters
+                // Provjera i označavanje checkbox-a ako je u activeFilters
                 if (activeFilters.contains(tagString)) {
                     checkBox.setChecked(true);
                 }
@@ -136,7 +136,7 @@ public class BookFiltersHelper {
                 cb.setText(range);
                 cb.setTag(rangeType + "_range:" + range);
 
-                // Provjeri da li je ovaj range već odabran i označi checkbox
+                // Provjera da li je ovaj range već odabran i označavanje checkbox-a
                 if (selectedRanges.contains(range)) {
                     cb.setChecked(true);
                 }

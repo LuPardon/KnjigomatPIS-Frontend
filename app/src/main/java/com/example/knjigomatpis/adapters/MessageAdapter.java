@@ -329,7 +329,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     public void onResponse(Call<BorrowRequest> call, Response<BorrowRequest> response) {
                         if (response.isSuccessful()) {
                             if(response.body() == null) {
-                                // nije se uspjelo, knjiga nedostupna
+                                // knjiga nedostupna
                             }
                             rejectButton.setVisibility(View.GONE);
                             acceptButton.setVisibility(View.GONE);
@@ -364,7 +364,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             try {
                 long timestamp = Long.parseLong(sentAt);
                 SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm", Locale.getDefault());
-                return sdf.format(new Date(timestamp * 1000)); // Convert from seconds to milliseconds
+                return sdf.format(new Date(timestamp * 1000)); // Convert sa sekundi na milisekunde
             } catch (NumberFormatException ex) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm", Locale.getDefault());
                 return sdf.format(new Date());

@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Postaviti jezik prije kreiranja UI-ja
+        // Postavljanje jezika prije kreiranja UI-ja
         LanguageHelper.setLocale(this, LanguageHelper.getLanguage(this));
 
         // Sakrivanje ACTION BAR prije setContentView()
@@ -112,10 +112,10 @@ public class StartActivity extends AppCompatActivity {
         mBundle.putString("scope", cachedCredentials.getScope() + "");
         mIntent.putExtras(mBundle);
 
-        // Pokreni MainActivity
+        // Pokretanje MainActivity-ja
         startActivity(mIntent);
 
-        // Završi StartActivity da se ne može vratiti back gumbom
+        // Završavanje StartActivity-ja da se ne može vratiti back gumbom
         finish();
     }
 

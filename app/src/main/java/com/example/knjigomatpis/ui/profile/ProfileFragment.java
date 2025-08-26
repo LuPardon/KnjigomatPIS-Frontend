@@ -59,7 +59,7 @@ public class ProfileFragment extends Fragment {
         binding.tvName.setText(((MainActivity) getActivity()).cachedUserProfile.getName());
         binding.tvEmail.setText(((MainActivity) getActivity()).cachedUserProfile.getEmail());
 
-        // Postavi početnu vrijednost lokacije
+        // Postavljanje početne vrijednosti lokacije
         updateLocationDisplay();
 
     }
@@ -76,7 +76,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupPrivateCollection() {
-        // Setup RecyclerView za private books
+        // Postavljanje RecyclerView za privatne knjige
         privateBookAdapter = new BookAdapter(getContext());
 
         String currentUserId = ((MainActivity)getActivity()).cachedUserProfile.getId();
@@ -143,7 +143,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(UserProfile userProfile) {
                         ((MainActivity)getActivity()).cachedUserProfile = userProfile;
-                        // Ažuriraj UI nakon dohvaćanja novih podataka
+                        // Ažuriranje UI nakon dohvaćanja novih podataka
                         if (getActivity() != null) {
                             getActivity().runOnUiThread(() -> {
                                 updateLocationDisplay();

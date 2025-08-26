@@ -65,20 +65,20 @@ public class ConversationsAdapter extends RecyclerView.Adapter<ConversationsAdap
         }
 
         public void bind(Chat chat) {
-            // Prikaži ime drugog korisnika ili ID ako ime nije dostupno
+            // Prikazuje ime drugog korisnika ili ID ako ime nije dostupno
             String displayName = chat.getPerson2Name() != null && !chat.getPerson2Name().isEmpty()
                     ? chat.getPerson2Name()
                     : itemView.getContext().getString(R.string.placeholder_user) + chat.getPerson2_id();
 
             tvUserName.setText(displayName);
 
-            // Prikaži zadnju poruku ili placeholder
+            // Prikazuje zadnju poruku ili placeholder
             String lastMessage = chat.getLastMessage() != null && !chat.getLastMessage().isEmpty()
                     ? chat.getLastMessage()
                     : itemView.getContext().getString(R.string.no_messages_yet);
             tvLastMessage.setText(lastMessage);
 
-            // Prikaži vrijeme zadnje poruke
+            // Prikazuje vrijeme zadnje poruke
             String lastTime = chat.getLastMessageTime() != null && !chat.getLastMessageTime().isEmpty()
                     ? formatTime(chat.getLastMessageTime())
                     : "";

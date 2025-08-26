@@ -41,7 +41,7 @@ public class HistoryViewModel extends ViewModel {
             public void onResponse(Call<List<UserExchangeHistoryResponse>> call, Response<List<UserExchangeHistoryResponse>> response) {
                 if (response.isSuccessful()) {
                     originalList.setValue(response.body());
-                    applyAllFilters(); // Primijeni sve aktivne filtere
+                    applyAllFilters(); // Primjenjivanje svih aktivnih filtera
                 } else {
                     // Handle error
                 }
@@ -112,7 +112,7 @@ public class HistoryViewModel extends ViewModel {
         boolean filterMine = activeFilters.contains("ownership_mine");
         boolean filterOthers = activeFilters.contains("ownership_others");
 
-        // Ako niti jedan ownership filter nije aktivan, vrati sve
+        // Ako niti jedan ownership filter nije aktivan, vraća sve
         if (!filterMine && !filterOthers) {
             return items;
         }
@@ -134,14 +134,14 @@ public class HistoryViewModel extends ViewModel {
     private List<UserExchangeHistoryResponse> applyStatusFilters(List<UserExchangeHistoryResponse> items) {
         List<String> statusFilters = new ArrayList<>();
 
-        // Izdvoji sve status filtere
+        // Izdvajanje svih status filtera
         for (String filter : activeFilters) {
             if (filter.startsWith("exchange_status_")) {
                 statusFilters.add(filter.replace("exchange_status_", ""));
             }
         }
 
-        // Ako nema status filtera, vrati sve
+        // Ako nema status filtera, vraća sve
         if (statusFilters.isEmpty()) {
             return items;
         }

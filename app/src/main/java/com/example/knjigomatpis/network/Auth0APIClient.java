@@ -8,7 +8,7 @@ public class Auth0APIClient {
 
     private static final String BASE_URL = "https://dev-l82m10ihxsexnmhy.eu.auth0.com/";
     private static final String CLIENT_ID = "jCg7BEhst5LrESF1XgdUnupkTT7xIbQ2";
-    private static final String CLIENT_SECRET = "{yourClientSecret}"; // Replace with actual secret
+//    private static final String CLIENT_SECRET = "{yourClientSecret}"; // Replace with actual secret
     private static final String AUDIENCE = "https://dev-l82m10ihxsexnmhy.eu.auth0.com/api/v2/";
 
 

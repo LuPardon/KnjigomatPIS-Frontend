@@ -221,7 +221,7 @@ public class EditBookFragment extends Fragment implements BookImagePagerAdapter.
 
         Log.d(TAG, getString(R.string.debug_book_deleted, currentBook.getTitle()));
 
-        // Automatski navigiraj nazad nakon kratke pauze
+        // Automatsko navigiranje nazad nakon kratke pauze
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (getActivity() != null) {
                 NavController navController = Navigation.findNavController(requireView());
@@ -613,7 +613,7 @@ public class EditBookFragment extends Fragment implements BookImagePagerAdapter.
                     requireActivity().getCacheDir());
 
             try (FileOutputStream outputStream = new FileOutputStream(tempFile)) {
-                byte[] buffer = new byte[8192]; // Povećan buffer za bolju performansu
+                byte[] buffer = new byte[8192]; // Buffer za bolju performansu
                 int length;
                 while ((length = inputStream.read(buffer)) > 0) {
                     outputStream.write(buffer, 0, length);
@@ -822,14 +822,14 @@ public class EditBookFragment extends Fragment implements BookImagePagerAdapter.
     private void styleAlertDialog(AlertDialog dialog) {
         dialog.setOnShowListener(d -> {
 
-            // Positive button styling
+            // Stil za positive button
             Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
             if (positiveButton != null) {
                 positiveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary_color));
                 positiveButton.setTypeface(null, Typeface.BOLD);
             }
 
-            // Negative button styling
+            // Stil za negative button
             Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
             if (negativeButton != null) {
                 negativeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.secondary_color));
@@ -872,7 +872,7 @@ public class EditBookFragment extends Fragment implements BookImagePagerAdapter.
                 snackbar.setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.error_color));
             }
 
-            // Style the text
+            // Stil za tekst
             View snackbarView = snackbar.getView();
             TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
             if (textView != null) {
