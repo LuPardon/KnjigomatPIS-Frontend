@@ -13,14 +13,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.auth0.android.Auth0;
-import com.auth0.android.authentication.AuthenticationAPIClient;
 import com.auth0.android.authentication.AuthenticationException;
 import com.auth0.android.callback.Callback;
 import com.auth0.android.provider.WebAuthProvider;
 import com.auth0.android.result.Credentials;
 import com.auth0.android.result.UserProfile;
 import com.example.knjigomatpis.databinding.ActivityStartBinding;
-import com.example.knjigomatpis.ui.helpers.LanguageHelper;
+import com.example.knjigomatpis.helpers.LanguageHelper;
 import com.google.android.material.snackbar.Snackbar;
 
 public class StartActivity extends AppCompatActivity {

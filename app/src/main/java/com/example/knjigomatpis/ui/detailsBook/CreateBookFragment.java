@@ -2,8 +2,10 @@ package com.example.knjigomatpis.ui.detailsBook;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -292,7 +294,7 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
 
             if (pendingImagePosition == -1) {
                 // Dodavanje nove slike
-                tempImagePaths.add(uriString);
+                tempImagePaths.add(uriString+ ".jpg");
                 imageAdapter.addImage(uriString);
                 addImageToBookImages(null, 0);
             } else {
@@ -309,6 +311,22 @@ public class CreateBookFragment extends Fragment implements BookImagePagerAdapte
                     getString(R.string.dialog_error_title),
                     getString(R.string.error_adding_image)
             );
+        }
+    }
+
+    public boolean checkImageExistsInMediaStore(Context context, String imageName) {
+        String[] projection = {MediaStore.Images.Media._ID};
+        String selection = MediaStore.Images.Media.DISPLAY_NAME + "=?";
+        String[] selectionArgs = {imageName};
+
+        try (Cursor cursor = context.getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                projection,
+                selection,
+                selectionArgs,
+                null)) {
+
+            return cursor != null && cursor.getCount() > 0;
         }
     }
 

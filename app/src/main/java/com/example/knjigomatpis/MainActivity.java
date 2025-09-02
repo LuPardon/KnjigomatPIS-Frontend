@@ -23,9 +23,9 @@ import com.example.knjigomatpis.models.BookRequestResponse;
 import com.example.knjigomatpis.models.UserNotification;
 import com.example.knjigomatpis.ui.detailsBook.CreateBookFragment;
 import com.example.knjigomatpis.ui.exchangeHistory.HistoryExchangeFragment;
-import com.example.knjigomatpis.ui.helpers.LanguageHelper;
+import com.example.knjigomatpis.helpers.LanguageHelper;
 import com.example.knjigomatpis.ui.home.HomeFragment;
-import com.example.knjigomatpis.ui.helpers.NotificationHelper;
+import com.example.knjigomatpis.helpers.NotificationHelper;
 
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -40,7 +40,6 @@ import com.auth0.android.result.Credentials;
 import com.auth0.android.result.UserProfile;
 import com.example.knjigomatpis.databinding.ActivityMainBinding;
 import com.example.knjigomatpis.models.Book;
-import com.example.knjigomatpis.ui.camera.CameraActivity;
 import com.example.knjigomatpis.ui.notifications.NotificationsFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -52,9 +51,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 

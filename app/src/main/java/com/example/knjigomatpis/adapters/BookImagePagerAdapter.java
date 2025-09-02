@@ -1,9 +1,16 @@
 package com.example.knjigomatpis.adapters;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +27,14 @@ import com.example.knjigomatpis.R;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +76,52 @@ public class BookImagePagerAdapter extends RecyclerView.Adapter<BookImagePagerAd
         return new ImageViewHolder(view);
     }
 
+    private static boolean checkUriWithInputStream(Context context, String uriString) {
+        Uri contentUri = Uri.parse(uriString);
+
+        ContentResolver resolver = context.getContentResolver();
+        InputStream inputStream = null;
+
+        try {
+            inputStream = resolver.openInputStream(contentUri);
+            return inputStream != null;
+        } catch (Exception e) {
+            // File doesn't exist or no permission
+            return false;
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private File createFileFromUri(Uri uri) {
+        try (InputStream inputStream = context.getContentResolver().openInputStream(uri)) {
+            if (inputStream == null) return null;
+
+            File tempFile = File.createTempFile("upload_image", ".jpg",
+                    context.getCacheDir());
+
+            try (FileOutputStream outputStream = new FileOutputStream(tempFile)) {
+                byte[] buffer = new byte[8192];
+                int length;
+                while ((length = inputStream.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, length);
+                }
+            }
+
+            return tempFile;
+        } catch (IOException e) {
+            Log.e(TAG, "Error creating file from URI", e);
+            return null;
+        }
+    }
+
+
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         try {
@@ -85,22 +146,38 @@ public class BookImagePagerAdapter extends RecyclerView.Adapter<BookImagePagerAd
             Log.d(TAG, "Binding position: " + position + ", total items: " + imagePaths.size());
 
             String imagePath = imagePaths.get(position);
+
             if (imagePath == null || imagePath.isEmpty()) {
                 Log.w(TAG, "Empty image path at position: " + position);
                 holder.imageView.setImageResource(R.drawable.placeholder_image);
                 return;
             }
 
-            String baseUrl = context.getString(R.string.base_url);
-            String imageUrl = baseUrl + imagePath;
+            boolean fileExistsLocal = checkUriWithInputStream(context, imagePath);
 
-            Log.d(TAG, "Loading image: " + imageUrl);
+            if(fileExistsLocal) {
+                Log.d(TAG, "Loading image: " + imagePath);
 
-            Picasso.get()
-                    .load(imageUrl)
-                    .placeholder(R.drawable.placeholder_image)
-                    .error(R.drawable.placeholder_image)
-                    .into(holder.imageView);
+                File file = createFileFromUri(Uri.parse(imagePath));
+                Picasso.get()
+                        .load(file)
+                        .placeholder(R.drawable.placeholder_image)
+                        .error(R.drawable.placeholder_image)
+                        .into(holder.imageView);
+
+            } else {
+                String baseUrl = context.getString(R.string.base_url);
+                String imageUrl = baseUrl + imagePath;
+
+                Log.d(TAG, "Loading image: " + imageUrl);
+
+                Picasso.get()
+                        .load(imageUrl)
+                        .placeholder(R.drawable.placeholder_image)
+                        .error(R.drawable.placeholder_image)
+                        .into(holder.imageView);
+
+            }
 
             // Postavi click listener za fullscreen prikaz
             holder.imageView.setOnClickListener(v -> {

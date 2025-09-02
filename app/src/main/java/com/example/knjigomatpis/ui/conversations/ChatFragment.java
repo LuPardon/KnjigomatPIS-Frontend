@@ -24,7 +24,7 @@ import com.example.knjigomatpis.R;
 import com.example.knjigomatpis.adapters.MessageAdapter;
 import com.example.knjigomatpis.models.BorrowRequest;
 import com.example.knjigomatpis.models.Message;
-import com.example.knjigomatpis.ui.helpers.Auth0Helper;
+import com.example.knjigomatpis.helpers.Auth0Helper;
 
 import org.json.JSONException;
 import org.json.JSONObject;

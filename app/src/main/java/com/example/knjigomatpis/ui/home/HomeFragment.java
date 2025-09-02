@@ -1,7 +1,6 @@
 package com.example.knjigomatpis.ui.home;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +21,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.knjigomatpis.R;
 import com.example.knjigomatpis.adapters.BookAdapter;
 import com.example.knjigomatpis.databinding.FragmentHomeBinding;
-import com.example.knjigomatpis.ui.helpers.BookFiltersDialogHelper;
-import com.example.knjigomatpis.ui.helpers.BookFiltersHelper;
+import com.example.knjigomatpis.helpers.BookFiltersDialogHelper;
+import com.example.knjigomatpis.helpers.BookFiltersHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HomeFragment extends Fragment {
 

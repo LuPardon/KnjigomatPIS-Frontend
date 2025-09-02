@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +23,7 @@ import com.example.knjigomatpis.R;
 import com.example.knjigomatpis.adapters.ExchangeHistoryAdapter;
 import com.example.knjigomatpis.databinding.FragmentHistoryExchangeBinding;
 import com.example.knjigomatpis.models.UserExchangeHistoryResponse;
-import com.example.knjigomatpis.ui.helpers.HistoryFiltersDialogHelper;
+import com.example.knjigomatpis.helpers.HistoryFiltersDialogHelper;
 
 import java.util.List;
 

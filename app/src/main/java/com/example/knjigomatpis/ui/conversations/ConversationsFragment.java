@@ -70,6 +70,7 @@ public class ConversationsFragment extends Fragment {
         adapter = new ConversationsAdapter(chatList, this::openChat);
         recyclerViewChats.setAdapter(adapter);
 
+        tvNoConversations.setVisibility(View.VISIBLE);
         return rootView;
     }
 
@@ -185,9 +186,9 @@ public class ConversationsFragment extends Fragment {
             if (recyclerViewChats != null) {
                 recyclerViewChats.setVisibility(show ? View.GONE : View.VISIBLE);
             }
-            if (tvNoConversations != null) {
-                tvNoConversations.setVisibility(View.GONE);
-            }
+//            if (tvNoConversations != null) {
+//                tvNoConversations.setVisibility(View.GONE);
+//            }
         });
     }
 
@@ -213,13 +214,16 @@ public class ConversationsFragment extends Fragment {
             showLoading(false);
 
             if (chatList != null && !chatList.isEmpty()) {
+                // Ima razgovora - prikaži recycler view
                 if (recyclerViewChats != null) {
                     recyclerViewChats.setVisibility(View.VISIBLE);
                 }
                 if (tvNoConversations != null) {
                     tvNoConversations.setVisibility(View.GONE);
                 }
-            } else {
+            }
+            else {
+                // Nema razgovora - prikaži poruku
                 if (recyclerViewChats != null) {
                     recyclerViewChats.setVisibility(View.GONE);
                 }

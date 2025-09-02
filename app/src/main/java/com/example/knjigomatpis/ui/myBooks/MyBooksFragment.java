@@ -22,8 +22,8 @@ import com.example.knjigomatpis.R;
 import com.example.knjigomatpis.adapters.BookAdapter;
 import com.example.knjigomatpis.databinding.FragmentMyBooksBinding;
 import com.example.knjigomatpis.models.Book;
-import com.example.knjigomatpis.ui.helpers.BookFiltersDialogHelper;
-import com.example.knjigomatpis.ui.helpers.BookFiltersHelper;
+import com.example.knjigomatpis.helpers.BookFiltersDialogHelper;
+import com.example.knjigomatpis.helpers.BookFiltersHelper;
 
 import java.util.ArrayList;
 import java.util.List;

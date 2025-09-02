@@ -15,7 +15,7 @@ import com.auth0.android.result.UserProfile;
 import com.example.knjigomatpis.R;
 import com.example.knjigomatpis.models.Auth0User;
 import com.example.knjigomatpis.models.UserExchangeHistoryResponse;
-import com.example.knjigomatpis.ui.helpers.Auth0Helper;
+import com.example.knjigomatpis.helpers.Auth0Helper;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;

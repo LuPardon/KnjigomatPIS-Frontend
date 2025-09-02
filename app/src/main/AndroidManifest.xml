@@ -20,6 +20,7 @@
 
     <application
         android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/my_ic_launcher"
@@ -31,9 +32,6 @@
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="false" />
         <activity
             android:name=".StartActivity"
             android:exported="true"

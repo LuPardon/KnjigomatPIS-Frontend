@@ -19,7 +19,7 @@ import com.example.knjigomatpis.models.BorrowRequest;
 import com.example.knjigomatpis.models.Message;
 import com.example.knjigomatpis.network.ApiClient;
 import com.example.knjigomatpis.network.IApiService;
-import com.example.knjigomatpis.ui.helpers.Auth0Helper;
+import com.example.knjigomatpis.helpers.Auth0Helper;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.example.knjigomatpis.ui.helpers;
+package com.example.knjigomatpis.helpers;
 
 import android.util.Log;
 import android.content.Context;
